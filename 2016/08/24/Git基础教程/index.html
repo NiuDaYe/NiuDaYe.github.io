@@ -186,8 +186,7 @@
                 <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-                <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span> is cpp code</div></pre></td></tr></table></figure>
-<h1 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h1><blockquote>
+                <h1 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h1><blockquote>
 <p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目.<br>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。<br>Git 是一个快速、可扩展的分布式版本控制系统，它具有极为丰富的命令集，此文主要介绍git的使用,了解git的三个区,通过git连接github,以及常用git的常用命令.</p>
 </blockquote>
 <h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><blockquote>
@@ -239,10 +238,10 @@
 <li>先创建一个空目录 ，然后进入此目录</li>
 <li>点击右键选择Git-Bash打开命令行</li>
 <li>输入git init命令把这个目录变成Git可以管理的仓库</li>
-<li>通过ls -al命令查看所有文件</li>
+<li>通过ls -al命令查看所有文件<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
+</li>
 </ol>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
 <h1 id="git中的三个区"><a href="#git中的三个区" class="headerlink" title="git中的三个区"></a>git中的三个区</h1><blockquote>
 <p>工作流  <a href="http://card.mugeda.com/campaigns/56d2c4a0a3664e3308000407/20160304090522/56d97729a3664e9c65000047/index.html" target="_blank" rel="external">http://card.mugeda.com/campaigns/56d2c4a0a3664e3308000407/20160304090522/56d97729a3664e9c65000047/index.html</a></p>
 <p>工作区</p>
@@ -253,7 +252,68 @@
 <blockquote>
 <p>通过git commit 添加到历史区<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git commit -m<span class="string">"注释内容"</span></div></pre></td></tr></table></figure></p>
 </blockquote>
+<p>历史区</p>
+<blockquote>
+<p>查看历史状态<br>修改时通过git status查看当前状态<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git <span class="built_in">log</span></div></pre></td></tr></table></figure></p>
 </blockquote>
+</blockquote>
+<h1 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h1><p>不同区的代码比较</p>
+<blockquote>
+<p>1.工作区和暂存区<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git diff</div></pre></td></tr></table></figure></p>
+<p>2.暂存区和历史区<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git diff --cached（--staged）</div></pre></td></tr></table></figure></p>
+<p>3.工作区和版本库<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git diff master</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h1><blockquote>
+<ol>
+<li><p>撤销回git add的内容</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">git reset Head <span class="string">"文件名"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>撤回文件 : 先从缓存区撤销,缓存区无内容，从历史区域撤销</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git checkout <span class="string">"文件名"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>有的时候我们希望提交时合并到上一次的提交 git commit –amend</li>
+</ul>
+<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><blockquote>
+<p>1.删除暂存区和工作区</p>
+<blockquote>
+<p>删除暂存区中的内容,并且保证工作区中的内容已经不存在<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git rm <span class="string">"文件名"</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>若本地文件存在则不能删除，需要通过-f参数删除<blockquote>
+<p>2.仅删除缓存区</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git rm --cached <span class="string">"文件名"</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h1 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h1><blockquote>
+<p>1.恢复某个版本文件<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git checkout commit_id filename 某个文件</div></pre></td></tr></table></figure></p>
+<p>2.通过版本id恢复<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git reset --hard commit_id</div></pre></td></tr></table></figure></p>
+<p>3.恢复未来<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git reflog</div></pre></td></tr></table></figure></p>
+<p>4.快速版本回退<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git reset --hard HEAD^</div><div class="line">$ git reset --hard HEAD~<span class="number">3</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="同步远程仓库"><a href="#同步远程仓库" class="headerlink" title="同步远程仓库"></a>同步远程仓库</h1><blockquote>
+<p>1.gitHub</p>
+<blockquote>
+<p>注册账号<br>新建仓库</p>
+</blockquote>
+<p>2.添加远程仓库<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git remote add origin <span class="string">"地址"</span>   <span class="comment">//origin 为自定义名称</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>添加忽略文件<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ touch .gitignore  写入一个过滤文件</div><div class="line">$ echo .DS_Store</div><div class="line">$ echo node_modules</div><div class="line">$ echo .idea</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.推送代码<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git push origin master</div></pre></td></tr></table></figure></p>
+<p>5.查看<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git remote 不带参数，列出已经存在的远程分支</div><div class="line">$ git remote -v 查看地址</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="代码的合并"><a href="#代码的合并" class="headerlink" title="代码的合并"></a>代码的合并</h1><blockquote>
+<p>1.git fetch<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git fetch</div></pre></td></tr></table></figure></p>
+<p>2.拉取过来手动合并<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git diff master origin/master</div><div class="line">$ git merge origin/master</div></pre></td></tr></table></figure></p>
+<p>3.拉取并合并<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git pull</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="常用命令总结"><a href="#常用命令总结" class="headerlink" title="常用命令总结"></a>常用命令总结</h1><figure class="highlight"><table><tr><td class="code"><pre><div class="line">rm -rf .git            在当前目录删除git</div><div class="line">git rf -m '文件夹名'    删除文件夹</div><div class="line">git remote             不带参数，列出已经存在的远程分支</div><div class="line">git branch -d dev      删除dev分支</div><div class="line"></div><div class="line">git add home/client/widget/*   提交整个目录</div><div class="line">git add home/client/page/order_list/  提交整个文件夹</div><div class="line"></div><div class="line">提交文件写备注 除了有 git commit -m “这是备注信息” 的方法外</div><div class="line">还有git commit 进入另一个界面的普通模式，按 i 键进入编辑模式 编辑完成后 再按esc退出编辑模式</div><div class="line">按shift+ :     wd 保存退出;</div></pre></td></tr></table></figure>
 
 
                 <hr>
@@ -266,9 +326,8 @@
                     data-title="Git基础教程"
                     data-url="http://niudaye.github.io/2016/08/24/Git基础教程/"
                     data-images=""
-                    data-content="this is cpp code
-Git简介
-Git是一款免费、开源的分布式版本控制系统，用于... | 度 " >
+                    data-content="Git简介
+Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目.... | 度 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -311,7 +370,7 @@ Git是一款免费、开源的分布式版本控制系统，用于... | 度 " >
 
             <div class="hidden-xs col-sm-3 toc-col" >
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git简介"><span class="toc-text">Git简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git的使用"><span class="toc-text">git的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是git"><span class="toc-text">什么是git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git的安装"><span class="toc-text">git的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置git用户和邮箱"><span class="toc-text">配置git用户和邮箱</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化git"><span class="toc-text">初始化git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git中的三个区"><span class="toc-text">git中的三个区</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git简介"><span class="toc-text">Git简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git的使用"><span class="toc-text">git的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是git"><span class="toc-text">什么是git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git的安装"><span class="toc-text">git的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置git用户和邮箱"><span class="toc-text">配置git用户和邮箱</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化git"><span class="toc-text">初始化git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git中的三个区"><span class="toc-text">git中的三个区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-diff"><span class="toc-text">git diff</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#撤销"><span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#恢复"><span class="toc-text">恢复</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步远程仓库"><span class="toc-text">同步远程仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码的合并"><span class="toc-text">代码的合并</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用命令总结"><span class="toc-text">常用命令总结</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -348,7 +407,7 @@ Git是一款免费、开源的分布式版本控制系统，用于... | 度 " >
                 <ul class="list-inline text-center">
 
                     
-                        <li><a href="qianduandu.com">前端度</a></li>
+                        <li><a href="http://qianduandu.com">前端度</a></li>
                     
                         <li><a href="https://niudaye.github.io/du">NIUYULEI</a></li>
                     

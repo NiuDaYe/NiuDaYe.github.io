@@ -16,11 +16,11 @@
 
     <title>
         
-          Hello World｜度
+          Git基础教程｜度
         
     </title>
 
-    <link rel="canonical" href="http://niudaye.github.io/2016/08/23/hello-world/">
+    <link rel="canonical" href="http://niudaye.github.io/2016/08/24/Git基础教程/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -153,15 +153,19 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>Git基础教程</h1>
                     
                     <span class="meta">
                          作者 度
                          <span>
-                          日期 2016-08-23
+                          日期 2016-08-24
                          </span>
                     </span>
                     <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                        
+                        <a class="tag" href="/tags/#教程" title="教程">教程</a>
                         
                     </div>
                 </div>
@@ -170,7 +174,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            Git基础教程
         </span>
     </div>
 </header>
@@ -182,15 +186,74 @@
                 <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+                <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span> is cpp code</div></pre></td></tr></table></figure>
+<h1 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h1><blockquote>
+<p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目.<br>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。<br>Git 是一个快速、可扩展的分布式版本控制系统，它具有极为丰富的命令集，此文主要介绍git的使用,了解git的三个区,通过git连接github,以及常用git的常用命令.</p>
+</blockquote>
+<h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><blockquote>
+<p>备份文件</p>
+<ol>
+<li>类似于网盘备份</li>
+<li>我们的代码也需要备份。修改完了以后提交给版本库进行保管，哪一天代码没了也可以找回来。</li>
+</ol>
+<p>记录历史</p>
+<ol>
+<li>比如我们打游戏就要存档，万一挂了还可以从上个存档的地方重玩。</li>
+<li>和网盘不同，网盘保留的是最新的状态，历史的记录都没有了，修改的记录也都找不回来了</li>
+<li>网盘无法知道文件里的某行代码是何人在哪个时间添加进去的</li>
+</ol>
+<p>回到过去</p>
+<ol>
+<li>如果我有一天不小心删除了某个文件，我们可以通过历史备份找回来</li>
+</ol>
+<p>多端共享</p>
+<ol>
+<li>Git仓库可以通过PC端、Android、IOS移动端等各个终端访问可以随时随地修改代码,公司没干完的工作回家接着干</li>
+</ol>
+<p>团队协作</p>
+<ol>
+<li>多个人或团队合作编写一个项目</li>
+<li>合并代码处理冲突</li>
+</ol>
+</blockquote>
+<h1 id="什么是git"><a href="#什么是git" class="headerlink" title="什么是git"></a>什么是git</h1><blockquote>
+<ol>
+<li>为了告别手动方式管理Linux代码,并且符合开源和免费,Linus花了两周时间自己用 C 写了一个分布式版本控制系统，这就是Git.</li>
+<li>Git迅速成为最流行的分布式版本控制系统，尤其是 2008 年 GitHub 网站上线了，它为开源项目 免费提供Git存储 ，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</li>
+</ol>
+</blockquote>
+<h1 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h1><blockquote>
+<p>mac下安装<br>下载Homebrew <a href="http://brew.sh" target="_blank" rel="external">http://brew.sh</a></p>
+</blockquote>
+<p><img src="http://web.qianduandu.com/homebrew.png" alt="Alt text" title="Optional title"></p>
+<blockquote>
+<p>1.拷贝对应脚本到终端下安装HomeBrew<br>2.然后在终端执行 brew install git命令安装*git</p>
+</blockquote>
+<h1 id="配置git用户和邮箱"><a href="#配置git用户和邮箱" class="headerlink" title="配置git用户和邮箱"></a>配置git用户和邮箱</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"你的github用户名"</span>    </div><div class="line">$ git config --global user.email <span class="string">"你的github邮箱"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>查看配置</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git config --global user.name</div><div class="line">$ git config --global user.email</div><div class="line">$ git config --<span class="built_in">list</span></div></pre></td></tr></table></figure>
+<h1 id="初始化git"><a href="#初始化git" class="headerlink" title="初始化git"></a>初始化git</h1><blockquote>
+<ol>
+<li>先创建一个空目录 ，然后进入此目录</li>
+<li>点击右键选择Git-Bash打开命令行</li>
+<li>输入git init命令把这个目录变成Git可以管理的仓库</li>
+<li>通过ls -al命令查看所有文件</li>
+</ol>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
+<h1 id="git中的三个区"><a href="#git中的三个区" class="headerlink" title="git中的三个区"></a>git中的三个区</h1><blockquote>
+<p>工作流  <a href="http://card.mugeda.com/campaigns/56d2c4a0a3664e3308000407/20160304090522/56d97729a3664e9c65000047/index.html" target="_blank" rel="external">http://card.mugeda.com/campaigns/56d2c4a0a3664e3308000407/20160304090522/56d97729a3664e9c65000047/index.html</a></p>
+<p>工作区</p>
+<blockquote>
+<p>通过git add 添加到暂存区<br><figure class="highlight"><table><tr><td class="code"><pre><div class="line">$ git add '文件名'</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>暂存区 :过渡的作用，避免误操作，保护工作区和历史区，分支处理;</p>
+<blockquote>
+<p>通过git commit 添加到历史区<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">$ git commit -m<span class="string">"注释内容"</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
 
 
                 <hr>
@@ -199,11 +262,13 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="2016/08/23/hello-world/"
-                    data-title="Hello World"
-                    data-url="http://niudaye.github.io/2016/08/23/hello-world/"
+                    data-thread-key="2016/08/24/Git基础教程/"
+                    data-title="Git基础教程"
+                    data-url="http://niudaye.github.io/2016/08/24/Git基础教程/"
                     data-images=""
-                    data-content="Welcome to Hexo! This is your very first post. ... | 度 " >
+                    data-content="this is cpp code
+Git简介
+Git是一款免费、开源的分布式版本控制系统，用于... | 度 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -221,10 +286,10 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/08/24/Git基础教程/" data-toggle="tooltip" data-placement="top" title="Git基础教程">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/2016/08/23/hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -232,9 +297,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/08/23/hello-world/"
-                        data-title="Hello World"
-                        data-url="http://niudaye.github.io/2016/08/23/hello-world/" >
+                        data-thread-key="2016/08/24/Git基础教程/"
+                        data-title="Git基础教程"
+                        data-url="http://niudaye.github.io/2016/08/24/Git基础教程/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -246,7 +311,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col" >
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git简介"><span class="toc-text">Git简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git的使用"><span class="toc-text">git的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是git"><span class="toc-text">什么是git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git的安装"><span class="toc-text">git的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置git用户和邮箱"><span class="toc-text">配置git用户和邮箱</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化git"><span class="toc-text">初始化git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git中的三个区"><span class="toc-text">git中的三个区</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -267,6 +332,10 @@
                     <a href="/tags/">FEATURED TAGS</a>
                 </h5>
                     <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                        
+                          <a class="tag" href="/tags/#教程" title="教程">教程</a>
                         
                     </div>
                 </section>

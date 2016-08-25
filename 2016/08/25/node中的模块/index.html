@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="度在 Github 上的个人博客">
+    <meta name="keyword"  content="qianduandu,前端度,度,牛玉磊,前端开发# seo key words">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          node中的模块｜度
+        
+    </title>
+
+    <link rel="canonical" href="http://niudaye.github.io/2016/08/25/node中的模块/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Du
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDuBg.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>node中的模块</h1>
+                    
+                    <span class="meta">
+                         作者 度
+                         <span>
+                          日期 2016-08-25
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#教程" title="教程">教程</a>
+                        
+                        <a class="tag" href="/tags/#node" title="node">node</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            node中的模块
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="node中的模块"><a href="#node中的模块" class="headerlink" title="node中的模块"></a>node中的模块</h1><blockquote>
+<p>javaScript 从一个仅仅在浏览器上面的一个玩具语言，一转眼演变成无所不能神一般的存在。但是，由于天生存在着一点戏剧性，模块系统作为一门语言最基本的属性却是javaScript所缺的。</p>
+</blockquote>
+<h2 id="1-JS的不足"><a href="#1-JS的不足" class="headerlink" title="1. JS的不足"></a>1. JS的不足</h2><blockquote>
+<ol>
+<li>js没有模块系统，不支持封闭作用域或依赖管理</li>
+<li>没有标准库，没有文件系统API</li>
+<li>没有包管理系统，不能自动加载和安装依赖</li>
+</ol>
+</blockquote>
+<h2 id="2-commonjs规范"><a href="#2-commonjs规范" class="headerlink" title="2.commonjs规范"></a>2.commonjs规范</h2><blockquote>
+<ol>
+<li>一个 node.js由大量模块组成，每个JS文件都是一个模块</li>
+<li>实现了require方法，npm基于commonjs实现了自动加载和安装依赖</li>
+</ol>
+</blockquote>
+<h2 id="3-模块化优点"><a href="#3-模块化优点" class="headerlink" title="3.模块化优点"></a>3.模块化优点</h2><blockquote>
+<ol>
+<li>增加内聚性，有助分工协作</li>
+<li>方便重构</li>
+<li>提高代码质量</li>
+</ol>
+</blockquote>
+<h2 id="4-模块使用"><a href="#4-模块使用" class="headerlink" title="4.模块使用"></a>4.模块使用</h2><blockquote>
+<ol>
+<li>定义模块</li>
+<li>导出模块 module.exports和exports</li>
+<li>使用模块 require(‘filename’);</li>
+<li>实现原理<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">exports,require,module,__filename,__dirname</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">module</span>.exports;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h2 id="5-require的应用"><a href="#5-require的应用" class="headerlink" title="5.require的应用"></a>5.require的应用</h2><blockquote>
+<p>加载模块后会缓存，多次加载后得到同一对象<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'./test.js'</span>)</div></pre></td></tr></table></figure></p>
+<p>查看模块缓存<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.cache);</div></pre></td></tr></table></figure></p>
+<p>查询模块绝对路径<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>);</div></pre></td></tr></table></figure></p>
+<p>查看单个的模块缓存<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)]</div></pre></td></tr></table></figure></p>
+<p>删除模块缓存<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./test.js'</span>)];</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="6-包和npm"><a href="#6-包和npm" class="headerlink" title="6.包和npm"></a>6.包和npm</h2><blockquote>
+<p>多个模块可以封装成一个包<br>npm是node.js默认的模块管理器,用来安装和管理node模块 网址为 <a href="http://npmjs.org" target="_blank" rel="external">http://npmjs.org</a><br>可以用包的方式通过npm安装、卸载、发布包</p>
+</blockquote>
+<h3 id="组织和管理自己的模块"><a href="#组织和管理自己的模块" class="headerlink" title="组织和管理自己的模块"></a>组织和管理自己的模块</h3><blockquote>
+<p>放置多个模块的文件夹称为包,可以通过包来对一组具有相互依赖的有关系模块进行管理。</p>
+<p>1.我们要在当前项目 一键初始化package.json<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm init -y</div></pre></td></tr></table></figure></p>
+<p>然后会自动生成一个package.json文件<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>:<span class="string">"包的名称"</span>,</div><div class="line">  <span class="string">"description"</span>：<span class="string">"包的简要说明。"</span>,</div><div class="line">  <span class="string">"version"</span>:<span class="string">"版本号"</span>,</div><div class="line">  <span class="string">"keywords"</span>：<span class="string">"关键字"</span>,</div><div class="line">  <span class="string">"licenses"</span>:<span class="string">"许可证"</span>,</div><div class="line">  <span class="string">"repositories"</span>：<span class="string">"仓库地址 "</span>,</div><div class="line">  <span class="string">"dependencies"</span>:<span class="string">"包的依赖，一个关联数组，由包名称和版本组成。"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.安装引用第三方包</p>
+<blockquote>
+<p>全局安装 直接下载到Node的安装目录中，各个项目都可以调用,适合工具模块，比如webpack<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm install -g webpack  <span class="comment">//全局安装</span></div></pre></td></tr></table></figure></p>
+<p>本地安装 将一个模块下载到当前目录的node_modules子目录，然后只有在当前目录和它的子目录之中，才能调用这个模块<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm install webpack     <span class="comment">//本地安装</span></div></pre></td></tr></table></figure></p>
+<p>查看全局安装路径<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm root -g</div></pre></td></tr></table></figure></p>
+<p>2-1.开发时候的依赖（在开发的时候才用到上线的时候用不到）<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm install --save-dev 文件名    <span class="comment">//devDependencies开发依赖 会自动引入到package.json</span></div></pre></td></tr></table></figure></p>
+<p>2-2. 写代码时候的依赖（代码依赖）<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm install --save 文件名         <span class="comment">//dependencies上线依赖  会自动引入到package.json</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>3.卸载第三方包</p>
+<blockquote>
+<p>3-1.卸载全局<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm uninstall -g [package name]</div></pre></td></tr></table></figure></p>
+<p>3-2.卸载本地<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm uninstall [package name] --save-dev</div><div class="line">npm uninstall [package name] --save</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>4.发布全局项目</p>
+<blockquote>
+<p>4-1.登陆用户<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm adduser</div></pre></td></tr></table></figure></p>
+<p>4-2.发布包<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+<h1 id="5-源管理工具"><a href="#5-源管理工具" class="headerlink" title="5.源管理工具"></a>5.源管理工具</h1><blockquote>
+<p>1.安装此工具<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">npm install -g nrm</div></pre></td></tr></table></figure></p>
+<p>2.显示所有的源<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">nrm ls</div></pre></td></tr></table></figure></p>
+<p>3.切换到中国源<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">nrm use cnpm</div></pre></td></tr></table></figure></p>
+</blockquote>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="2016/08/25/node中的模块/"
+                    data-title="node中的模块"
+                    data-url="http://niudaye.github.io/2016/08/25/node中的模块/"
+                    data-images=""
+                    data-content="node中的模块
+javaScript 从一个仅仅在浏览器上面的一个玩具语言，一转眼演变成无所... | 度 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/08/24/Git基础教程/" data-toggle="tooltip" data-placement="top" title="Git基础教程">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/08/25/node中的模块/"
+                        data-title="node中的模块"
+                        data-url="http://niudaye.github.io/2016/08/25/node中的模块/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#node中的模块"><span class="toc-text">node中的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-JS的不足"><span class="toc-text">1. JS的不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-commonjs规范"><span class="toc-text">2.commonjs规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-模块化优点"><span class="toc-text">3.模块化优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-模块使用"><span class="toc-text">4.模块使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-require的应用"><span class="toc-text">5.require的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-包和npm"><span class="toc-text">6.包和npm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组织和管理自己的模块"><span class="toc-text">组织和管理自己的模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-源管理工具"><span class="toc-text">5.源管理工具</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                <h5 class="text-center">
+                    <a href="/tags/">FEATURED TAGS</a>
+                </h5>
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#教程" title="教程">教程</a>
+                        
+                          <a class="tag" href="/tags/#node" title="node">node</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5 class="text-center">FRIENDS</h5>
+                <ul class="list-inline text-center">
+
+                    
+                        <li><a href="http://qianduandu.com">前端度</a></li>
+                    
+                        <li><a href="https://niudaye.github.io/du">NIUYULEI</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'qianduandu';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/qianduandu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Du 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_bank" href="http://qianduandu.com/">前端度</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://niudaye.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '098c926d03f4d898ae7908eb186be435';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDu.jpg">
+</body>
+
+</html>

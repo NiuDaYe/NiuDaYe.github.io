@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="度在 Github 上的个人博客">
+    <meta name="keyword"  content="qianduandu,前端度,度,牛玉磊,前端开发# seo key words">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          Es6教程｜度
+        
+    </title>
+
+    <link rel="canonical" href="http://niudaye.github.io/2016/12/24/Es6教程/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Du
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDuBg.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Es6教程</h1>
+                    
+                    <span class="meta">
+                         作者 度
+                         <span>
+                          日期 2016-12-24
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Es6" title="Es6">Es6</a>
+                        
+                        <a class="tag" href="/tags/#教程" title="教程">教程</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Es6教程
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <hr>
+<blockquote>
+<p>‘use strict’;<br>    在低版本浏览器下只是一个字符串不会报错在高版本浏览器下严格执行js;</p>
+</blockquote>
+<hr>
+<h3 id="一，let和const"><a href="#一，let和const" class="headerlink" title="一，let和const"></a>一，let和const</h3><h5 id="1-块级作用域"><a href="#1-块级作用域" class="headerlink" title="1,块级作用域"></a>1,块级作用域</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">for (var i = 0; i &lt; 5; i++) &#123;</div><div class="line">  setTimeout(function()&#123;</div><div class="line">    console.log(i);</div><div class="line">  &#125;,2000)</div><div class="line">&#125;</div><div class="line">// 结果为5   正常的  因为for循环执行完才执行的settimeout</div><div class="line"></div><div class="line">for (let i = 0; i &lt; 5; i++) &#123;</div><div class="line">  setTimeout(function()&#123;</div><div class="line">    console.log(i);</div><div class="line">  &#125;,2000)</div><div class="line">&#125;</div><div class="line">// 0 1 2 3 4</div><div class="line"></div><div class="line">for (var i = 0; i &lt; 5; i++) &#123;</div><div class="line">  ;(function(i)&#123;</div><div class="line">    setTimeout(function()&#123;</div><div class="line">      console.log(i);</div><div class="line">    &#125;,2000)</div><div class="line">  &#125;)(i);  //前后分号避免与其他代码的冲突</div><div class="line">&#125;</div><div class="line">//0 1 2 3 4 闭包的方式实现</div></pre></td></tr></table></figure>
+<h5 id="2-关于let"><a href="#2-关于let" class="headerlink" title="2,关于let"></a>2,关于let</h5><pre><code>ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+</code></pre><ul>
+<li><p>var 存在的问题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">1. 没有块级作用域</div><div class="line">2. for循环变量共享</div></pre></td></tr></table></figure>
+</li>
+<li><p>let的好处</p>
+<blockquote>
+<p>1,块级作用域{}<br>2,不会污染window</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let a = &apos;1&apos;;</div><div class="line">let b = &apos;123&apos;;    //不在window上不会污染window的全局变量</div><div class="line">window.b = &apos;456&apos;;</div></pre></td></tr></table></figure>
+<p>3,for循环都可以用i<br>4,同一个作用域中  重新定义会报错</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let a = &apos;123&apos;;</div><div class="line">let a = &apos;345&apos;;</div></pre></td></tr></table></figure>
+<p>5,不存在变量的预定义 （不会提前定义）</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="3-关于const"><a href="#3-关于const" class="headerlink" title="3,关于const"></a>3,关于const</h5><pre><code>const声明一个只读的常量。一旦声明，常量的值就不能改变。const是一个新的定义方式,let 是取代var的方式；
+</code></pre><ul>
+<li>定义后不允许被修改</li>
+<li>不同块级作用域可以重名定义<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">const a = &apos;123&apos;;</div><div class="line">a = &apos;345&apos;;</div><div class="line">console.log(a); //会报错  不允许修改值</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="二，解构赋值"><a href="#二，解构赋值" class="headerlink" title="二，解构赋值"></a>二，解构赋值</h3><pre><code>解构赋值:变量的批量赋值（把右侧的数据类型赋值到左侧构造的相似的数据类型中）
+</code></pre><h5 id="1-示例"><a href="#1-示例" class="headerlink" title="1,示例"></a>1,示例</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,2,3];</div><div class="line">//console.log(arr[0])  1</div><div class="line">//console.log(arr[1])  2</div><div class="line">//console.log(arr[2])  3</div><div class="line">let [a,b,c] = arr;</div><div class="line">console.log(arr); //1 2 3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,[2.1,2.2],3];</div><div class="line">let [a,[b1],c] = arr;</div><div class="line">console.log(a,b1,c); //1  2.1  3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,2,3,4,5];</div><div class="line">// ...扩展运算符</div><div class="line">let [a,b,...n] = arr;</div><div class="line">console.log(a,b,n)</div></pre></td></tr></table></figure>
+<h5 id="2-对象的解构赋值"><a href="#2-对象的解构赋值" class="headerlink" title="2,对象的解构赋值"></a>2,对象的解构赋值</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line"></div><div class="line">let obj = &#123;</div><div class="line">  a:&apos;a&apos;,</div><div class="line">  b:&apos;b&apos;,</div><div class="line">  c:&apos;c&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let &#123;x,y,z&#125; = obj;</div><div class="line">console.log(x,y,z);  //underfind underfind underfind</div><div class="line">为什么都是underfind呢  因为对象是无序的  不能保证x就对应a;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let obj = &#123;</div><div class="line">  a:&apos;a&apos;,</div><div class="line">  b:&apos;b&apos;,</div><div class="line">  c:&apos;c&apos;</div><div class="line">&#125;</div><div class="line">let &#123;a,b,c&#125; = obj;</div><div class="line">console.log(a,b,c);   //a,b,c</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let obj = &#123;</div><div class="line">  a:&apos;a&apos;,</div><div class="line">  b:&apos;b&apos;,</div><div class="line">  c:&apos;c&apos;,</div><div class="line">  arr:[1,2,3]</div><div class="line">&#125;</div><div class="line">let &#123;a:mya,b:myb,c:myc,arr:[ , ,x]&#125; = obj;</div><div class="line">console.log(mya,myb,myc,x)  //a,b,c,3</div></pre></td></tr></table></figure>
+<h3 id="三，闭包的区别"><a href="#三，闭包的区别" class="headerlink" title="三，闭包的区别"></a>三，闭包的区别</h3><h5 id="1-正常js的闭包的写法"><a href="#1-正常js的闭包的写法" class="headerlink" title="1,正常js的闭包的写法"></a>1,正常js的闭包的写法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">;(function()&#123;&#125;)();</div></pre></td></tr></table></figure>
+<h5 id="2-es6闭包"><a href="#2-es6闭包" class="headerlink" title="2,es6闭包"></a>2,es6闭包</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">es6  只需要一个大括号  &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="四，函数"><a href="#四，函数" class="headerlink" title="四，函数"></a>四，函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">function add(x=0,y=0)&#123;</div><div class="line">  return x+y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let res =add(&apos;wqeqwe&apos;,undefined);</div><div class="line">console.log(res);</div></pre></td></tr></table></figure>
+<h5 id="1-作用域的隔离"><a href="#1-作用域的隔离" class="headerlink" title="1,作用域的隔离"></a>1,作用域的隔离</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let x = 1;</div><div class="line"></div><div class="line">function add(x,y)&#123;</div><div class="line">  x = 10;</div><div class="line">  return x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let res = add(1,2);</div><div class="line">console.log(x);     //1     x与add函数内的x没有关系</div><div class="line">console.log(res);   //12</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">function add(...ary)&#123;</div><div class="line">  let res = 0;</div><div class="line">  for(let i=0,len=ary.length;i&lt;=len;i++)&#123;</div><div class="line">  //for(let i=0; i&lt;=ary.length;i++)&#123; 为什么不用这种方法而是先定义一个len,避免每次都判断ary的长度而损耗性能</div><div class="line"></div><div class="line">    res+=i;</div><div class="line">    debugger;       //自动启用debug模式,不用手动打断点</div><div class="line">  &#125;</div><div class="line">  return res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let res = add(1,2,3,4,5);</div><div class="line">console.log(res);   //15</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//这个写法等同于上面的写法</div><div class="line">function add()&#123;</div><div class="line">  let res = 0;</div><div class="line">  for(let i = 0, len = arguments.length; i &lt;= len; i++ )&#123;</div><div class="line">    res += i;</div><div class="line">  &#125;</div><div class="line">  return res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let res = add(1,2,3,4,5);</div><div class="line">console.log(res);   //15</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">求最大值</div><div class="line">let arr = [1,10,100,3000];</div><div class="line">let m = Math.max.apply(null,arr);</div><div class="line">//let m = Math.max(...arr); 扩展运算符写法</div><div class="line">console.log(m);</div></pre></td></tr></table></figure>
+<h5 id="2-箭头函数"><a href="#2-箭头函数" class="headerlink" title="2,箭头函数"></a>2,箭头函数</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let fun1 = function(num)&#123;</div><div class="line">  return num +1;</div><div class="line">&#125;   //正常函数写法</div><div class="line"></div><div class="line">let fun2 = (num) =&gt; num+2; //es6函数写法1  只能定义匿名函数</div><div class="line">let fun2 = (num)=&gt;&#123;</div><div class="line">  return num +2;</div><div class="line">&#125;   //es6函数写法2  只能定义匿名函数</div><div class="line"></div><div class="line">let res1 = fun1(1);</div><div class="line">let res2 = fun2(2);</div><div class="line">console.log(res1,res2); //2,4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">1,乘方算法</div><div class="line">let arr = [1,3,7,9];</div><div class="line">let r = arr.map(function(item,index,arr)&#123;</div><div class="line">  return item*item;</div><div class="line">&#125;)</div><div class="line">let r1 = arr.map((item,index,arr) =&gt; &#123;</div><div class="line">  return item*item;</div><div class="line">&#125;)</div><div class="line">let r2 = arr.map((item,index,arr) =&gt; item*item)</div><div class="line"></div><div class="line">let r3 = arr.map(item =&gt; item*item)</div><div class="line">console.log(r3);  //1,9,49,81</div></pre></td></tr></table></figure>
+<h5 id="3-箭头函数的this关键字"><a href="#3-箭头函数的this关键字" class="headerlink" title="3,箭头函数的this关键字"></a>3,箭头函数的this关键字</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">function func()&#123;</div><div class="line">  //setTimeout(function()&#123;</div><div class="line">    //console.log(this.id); //dengfind</div><div class="line">  //&#125;)</div><div class="line">  setTimeout(()=&gt;&#123;</div><div class="line">    console.log(this.id);  //这是id</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">let obj = &#123;</div><div class="line">  id:&apos;这是id&apos;</div><div class="line">&#125;</div><div class="line">func.call(obj);</div></pre></td></tr></table></figure>
+<h3 id="五，第七种数据类型Symbol"><a href="#五，第七种数据类型Symbol" class="headerlink" title="五，第七种数据类型Symbol"></a>五，第七种数据类型Symbol</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 第七种数据类型  Symbol</div><div class="line">let sym = Symbol();</div><div class="line">console.log(typeof sym);  //symbol</div><div class="line"></div><div class="line">let sym1 = Symbol(&apos;sum&apos;);</div><div class="line">let sym2 = Symbol(&apos;sum&apos;);</div><div class="line"></div><div class="line">console.log(sym1 == sym2);    //false</div><div class="line">console.log(sym1.toString() == sym2.toString());  //true   不可以参加运算  toString后才可以</div></pre></td></tr></table></figure>
+<h5 id="1-模板字符串"><a href="#1-模板字符串" class="headerlink" title="1,模板字符串"></a>1,模板字符串</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let a = &apos;我是&apos;</div><div class="line">//let es6str = `123$&#123;a+&apos;中间数字&apos;&#125;456`; //$&#123;&#125;进行转意</div><div class="line">let es6str = `123\$\&#123;a+&apos;中间数字&apos;\&#125;456`; //这样转意$&#123;&#125;能输出出来</div><div class="line"></div><div class="line">console.log(es6str);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>另外有 doT.js小而巧的模板引擎</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//插入的可以是表达式</div><div class="line">function jia(x,y)&#123;</div><div class="line">  return x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let num = `1+2=$&#123;jia(3,4)&#125;`;</div><div class="line">console.log(num);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let isgril = `i am a $&#123;true ? &apos;boy&apos;:&apos;gril&apos;&#125;`;</div><div class="line">console.log(isgril)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 自动类型转换</div><div class="line">let typeStr = `$&#123;1,2,3&#125;`;</div><div class="line">console.log(typeStr);</div></pre></td></tr></table></figure>
+<h3 id="六，数组"><a href="#六，数组" class="headerlink" title="六，数组"></a>六，数组</h3><h5 id="1-数组拷贝slice和es6属性Array-from"><a href="#1-数组拷贝slice和es6属性Array-from" class="headerlink" title="1,数组拷贝slice和es6属性Array.from"></a>1,数组拷贝slice和es6属性Array.from</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr1 = [1,2,3];</div><div class="line"></div><div class="line">//let arr2 = arr1.slice(0); //复制一个新数组</div><div class="line">let arr2 = Array.from(arr1);  //es6 复制一个新数组</div><div class="line"></div><div class="line">arr1[0] = 111;</div><div class="line">console.log(arr1,arr2)</div><div class="line">打印出的log是：</div><div class="line">[111,2,3]</div><div class="line">[1,2,3]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let obj = &#123;</div><div class="line">  a:&apos;a&apos;,</div><div class="line">  b:&apos;b&apos;</div><div class="line">&#125;</div><div class="line">let arr1 = [1,2,3,obj];</div><div class="line">let arr2 = Array.from(arr1);  //es6 复制一个新数组</div><div class="line"></div><div class="line">arr1[0] = 111;</div><div class="line">console.log(arr1,arr2)</div><div class="line">打印出的log是：</div><div class="line">[111,2,3,&#123;a:&apos;a&apos;,b:&apos;b&apos;&#125;]</div><div class="line">[1,2,3,&#123;a:&apos;a&apos;,b:&apos;b&apos;&#125;]       //obj是引用类型的,也会被拷贝进来</div></pre></td></tr></table></figure>
+<h5 id="2-Array-of-新建数组"><a href="#2-Array-of-新建数组" class="headerlink" title="2,Array.of 新建数组"></a>2,Array.of 新建数组</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr1 = new Array(5);</div><div class="line">let arr2 = new Array(1,2,3);</div><div class="line"></div><div class="line">console.log(arr1,arr2);</div><div class="line">打印出的log是：</div><div class="line">[]  //长度是5，数组就一个参数的话 会设置成是数组长度；</div><div class="line">[1,2,3]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr1 = Array.of(5);</div><div class="line">cosole.log(arr1);</div><div class="line">打印出的log是：</div><div class="line">[5] //Array.of传一个参数的话不会是设置数组的长度,解决上面的问题；</div></pre></td></tr></table></figure>
+<h5 id="3-Array-copyWithin-复制并替换数组某一块"><a href="#3-Array-copyWithin-复制并替换数组某一块" class="headerlink" title="3,Array.copyWithin 复制并替换数组某一块"></a>3,Array.copyWithin 复制并替换数组某一块</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Array.copyWithin 把数组的某一块复制并替换到另一块</div><div class="line">// target被覆盖的下标</div><div class="line">// start 截取开始的下标</div><div class="line">// end 截取结束的下标的下一个</div><div class="line">//Array.prototype.copyWithin(target,start=0,end=this.length)</div><div class="line"></div><div class="line">let arr = [6,7,8,9,10,11,12,13];</div><div class="line">arr.copyWithin(4,0,3);    //从第三个下标开始</div><div class="line"></div><div class="line">console.log(arr); // [6,7,8,9,6,7,8,13]</div></pre></td></tr></table></figure>
+<h5 id="4-Array-fill-复制并替换数组某一块"><a href="#4-Array-fill-复制并替换数组某一块" class="headerlink" title="4,Array.fill 复制并替换数组某一块"></a>4,Array.fill 复制并替换数组某一块</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Array.fill 把数组的某一块复制并替换到另一块</div><div class="line">// target被覆盖的下标</div><div class="line">// start 截取开始的下标</div><div class="line">// end 截取结束的下标的下一个</div><div class="line">//Array.prototype.fill(target,start=0,end=this.length)</div><div class="line"></div><div class="line">let arr = [6,7,8,9,10,11,12,13];</div><div class="line">arr.fill(&apos;aa&apos;,1,3);    //从第1个下标开始</div><div class="line"></div><div class="line">console.log(arr); // [6,&apos;aa&apos;,&apos;aa&apos;,9,6,7,8,13]</div></pre></td></tr></table></figure>
+<h5 id="5-find-查找元素-和-findIndex-查找元素下标"><a href="#5-find-查找元素-和-findIndex-查找元素下标" class="headerlink" title="5,find 查找元素 和 findIndex 查找元素下标"></a>5,find 查找元素 和 findIndex 查找元素下标</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,&apos;3&apos;,3,4,5];</div><div class="line">let res = arr.find((item,index,array)=&gt;&#123;</div><div class="line">  return item == &apos;1&apos;;</div><div class="line">&#125;)</div><div class="line">console.log(res,typeof res);    //1 number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [&apos;1&apos;,&apos;3&apos;,3,4,5];</div><div class="line">let res = arr.find((item,index,array)=&gt;&#123;</div><div class="line">  return item == &apos;1&apos;;</div><div class="line">&#125;)</div><div class="line">console.log(res,typeof res);    //1 string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [&apos;9&apos;,1,&apos;1&apos;,&apos;3&apos;,3,4,5];</div><div class="line">let res = arr.findIndex((item,index,array)=&gt;&#123;</div><div class="line">  return item == &apos;1&apos;;</div><div class="line">&#125;)</div><div class="line">console.log(res,typeof res);    //下标为1 number</div></pre></td></tr></table></figure>
+<h5 id="6-includes-查找元素-找到返回true-找不到返回false"><a href="#6-includes-查找元素-找到返回true-找不到返回false" class="headerlink" title="6,includes 查找元素  找到返回true 找不到返回false"></a>6,includes 查找元素  找到返回true 找不到返回false</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,2,3,4];</div><div class="line"></div><div class="line">let res1 = arr.indexOf(4);</div><div class="line">let res2 = arr.includes(0);</div><div class="line"></div><div class="line">console.log(res1); //下标为3</div><div class="line">console.log(res2); //没有0这个值  返回false</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,2,3,4,NaN];</div><div class="line"></div><div class="line">let res1 = arr.indexOf(NaN);</div><div class="line">let res2 = arr.includes(NaN);</div><div class="line"></div><div class="line">console.log(res1); //-1</div><div class="line">console.log(res2); //true</div></pre></td></tr></table></figure>
+<h5 id="7-keys获取下标和entries获取下标及对应值"><a href="#7-keys获取下标和entries获取下标及对应值" class="headerlink" title="7,keys获取下标和entries获取下标及对应值"></a>7,keys获取下标和entries获取下标及对应值</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let arr = [1,3,5,7];</div><div class="line"></div><div class="line">let res1 = arr.keys();</div><div class="line">let res2 = arr.entries();</div><div class="line"></div><div class="line">console.log(res1); //ArrayIterator &#123;&#125; 迭代器 &#123;&quot;1&quot;, &quot;3&quot;, &quot;5&quot;, &quot;7&quot;&#125;</div><div class="line"></div><div class="line">for (let item of res1)&#123;</div><div class="line">  console.log(item) //获取arr的下标  0 1 2 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let item of res2)&#123;</div><div class="line">  console.log(item) //获取arr的下标及值 [1,2] [1,3] [2,5] [3,7]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="七，对象"><a href="#七，对象" class="headerlink" title="七，对象"></a>七，对象</h3><h5 id="1-简写"><a href="#1-简写" class="headerlink" title="1,简写"></a>1,简写</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let a = &apos;1&apos;;</div><div class="line">let b = &apos;2&apos;;</div><div class="line">let c = &apos;3&apos;;</div><div class="line"></div><div class="line">let obj = &#123;</div><div class="line">  a,b,c</div><div class="line">&#125;</div><div class="line">console.log(obj); //&#123;a: &quot;1&quot;, b: &quot;2&quot;, c: &quot;3&quot;&#125;</div></pre></td></tr></table></figure>
+<h5 id="2-区别"><a href="#2-区别" class="headerlink" title="2,区别"></a>2,区别</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let ob1 = &#123;</div><div class="line">  add : function()&#123;</div><div class="line">    //对象的正常写法</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let ob2 = &#123;</div><div class="line">  add()&#123;</div><div class="line">    //对象的es6写法</div><div class="line">  &#125;,</div><div class="line">  [dele]:&apos;1212&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3-is-更严格更合理的值相等"><a href="#3-is-更严格更合理的值相等" class="headerlink" title="3,is 更严格更合理的值相等"></a>3,is 更严格更合理的值相等</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;use strict&apos;</div><div class="line">// == 和 === 是相等和严格相等</div><div class="line">//Object.is() 是更严格更合理的值相等 两个对象依然是不相等的</div><div class="line"></div><div class="line">console.log(+0 === -0);   //true</div><div class="line">console.log(Object.is(+0,-0));  //false</div><div class="line"></div><div class="line">console.log(NaN === NaN); //false</div><div class="line">console.log(Object.is(NaN,NaN));  //true</div><div class="line"></div><div class="line">console.log(&#123;&#125; === &#123;&#125;); //false</div><div class="line">console.log(Object.is(&#123;&#125;,&#123;&#125;));  //false</div></pre></td></tr></table></figure>
+<h5 id="4-对象的合并"><a href="#4-对象的合并" class="headerlink" title="4,对象的合并"></a>4,对象的合并</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line"></div><div class="line">let obj1 = &#123;x:&apos;1&apos;&#125;;</div><div class="line">let obj2 = &#123;y:&apos;2&apos;&#125;;</div><div class="line">let obj3 = &#123;x:&apos;3&apos;&#125;;</div><div class="line"></div><div class="line">let obj4 = Object.assign(obj1,obj2,obj3);</div><div class="line">console.log(obj4) //&#123;x: &quot;3&quot;, y: &quot;2&quot;&#125;  合并了obj2里面的y,被obj3里面的x替换.</div></pre></td></tr></table></figure>
+<h3 id="八，Set和map"><a href="#八，Set和map" class="headerlink" title="八，Set和map"></a>八，Set和map</h3><h5 id="1-Set-add-delete-has-clear"><a href="#1-Set-add-delete-has-clear" class="headerlink" title="1,Set (add delete has clear)"></a>1,Set (add delete has clear)</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//new Set</div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">console.log(s); //&#123;&quot;1&quot;, &quot;0&quot;, &quot;2&quot;, &quot;3&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//delete</div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">console.log(s); //&#123;&quot;1&quot;,&quot;0&quot;, &quot;2&quot;, &quot;3&quot;&#125;</div><div class="line"></div><div class="line">let dele = s.delete(&apos;1&apos;);</div><div class="line">console.log(dele); // true删除成功</div><div class="line">console.log(s); //所以s的结果为&#123;&quot;0&quot;, &quot;2&quot;, &quot;3&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//add</div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">let add = s.add(&apos;bb&apos;);</div><div class="line">console.log(add); //&#123;&quot;1&quot;,&quot;0&quot;, &quot;2&quot;, &quot;3&quot;, &quot;bb&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//has</div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">let add = s.has(&apos;1&apos;);</div><div class="line">console.log(add); //true</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//clear</div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">let add = s.clear();</div><div class="line">console.log(add); //没有返回值  undefined</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//entries</div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">let add = s.entries();  //迭代器</div><div class="line">console.log(add[0]);    //undefined  只能用for of遍历出来</div><div class="line"></div><div class="line">for(item of add)&#123;</div><div class="line">  console.log(item);//[&quot;1&quot;, &quot;1&quot;],[&quot;0&quot;, &quot;0&quot;],[&quot;2&quot;, &quot;2&quot;],[&quot;3&quot;, &quot;3&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//keys  </div><div class="line">let s = new Set(&apos;1023&apos;);</div><div class="line">let keey = s.keys();</div><div class="line">console.log(keey)   // &#123;&quot;1&quot;, &quot;0&quot;, &quot;2&quot;, &quot;3&quot;&#125;</div><div class="line"></div><div class="line">for(item of keey)&#123;</div><div class="line">  console.log(item) //1 0 2 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let y = new Set([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]);</div><div class="line">let arr = [...y];</div><div class="line"></div><div class="line">console.log(arr); //[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//数组去重 思路</div><div class="line">let x = [1,1,1,1,2,2,4,4,5,5,5];</div><div class="line">let q = new Set(x);   //数组放进q</div><div class="line">console.log(q);       //给q去重 [1,2,4,5]</div><div class="line">let z = Array.from(q);//去重后放进z里面</div><div class="line">console.log(z)        //[1,2,4,5]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//数组去重 简写</div><div class="line">let x = [1,1,1,1,2,2,4,4,5,5,5];</div><div class="line">x = Array.from(new Set(x));</div><div class="line">console.log(x); //[1,2,4,5]</div></pre></td></tr></table></figure>
+<h5 id="2-Set实现js中的集合运算"><a href="#2-Set实现js中的集合运算" class="headerlink" title="2,Set实现js中的集合运算"></a>2,Set实现js中的集合运算</h5><pre><code>集合运算有三种 并集 交集 差集
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let a1 = new Set([1,3,5,7]);</div><div class="line">let a2 = new Set([1,2,3,4]);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//并集：合并去重</div><div class="line">let bj = new Set(a1,a2);</div><div class="line">//let bj = new Set([...a1,...a2]);</div><div class="line">console.log(bj);  //&#123;1, 3, 5, 7&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//交集：共有的部分</div><div class="line">let jj = [...a1].filter((item)=&gt;&#123;</div><div class="line">  return a2.has(item);</div><div class="line">&#125;)</div><div class="line">let qq = new Set(jj);</div><div class="line">console.log(qq) //[1,3]</div><div class="line"></div><div class="line">//交集简写</div><div class="line">let qq = new Set([...a1].filter(item=&gt; a2.has(item)));</div><div class="line">console.log(qq) //[1,3]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//差集：我有你没有的部分</div><div class="line">let cj1 = new Set([...a1].filter(item =&gt; !a2.has(item)));</div><div class="line">console.log(cj1);//&#123;5, 7&#125; a1有a2没有的</div><div class="line"></div><div class="line">let cj2 = new Set([...a2].filter(item =&gt; !a1.has(item)));</div><div class="line">console.log(cj2);//&#123;2, 4&#125; a2有a1没有的</div></pre></td></tr></table></figure>
+<h5 id="3-map-和set的用法是一样的"><a href="#3-map-和set的用法是一样的" class="headerlink" title="3,map 和set的用法是一样的"></a>3,map 和set的用法是一样的</h5><hr>
+<h3 id="九，promise"><a href="#九，promise" class="headerlink" title="九，promise"></a>九，promise</h3><blockquote>
+<ul>
+<li>每个promise有三种状态：pending,resolve,reject</li>
+<li>从初始状态到成功  pending –&gt; resolve</li>
+<li>从初始状态到失败  pending –&gt; reject</li>
+</ul>
+</blockquote>
+<p><img src="http://web.qianduandu.com/promise.jpg" alt="promise"></p>
+<h5 id="如何构造一个promise？"><a href="#如何构造一个promise？" class="headerlink" title="如何构造一个promise？"></a>如何构造一个promise？</h5><blockquote>
+<p>构造一个<code>promise</code>实例需要给<code>promise</code>传进一个函数，传进的函数需要有两个形参，两个形参都是<code>function</code>类型的参数:</p>
+<ul>
+<li>1:第一个形参运行后会让promise实例处于<code>resolve</code>状态，所以我们一般给第一个形参命名为<code>resolve</code>,约定<code>resolve</code>为成功状态。</li>
+<li>2:第二个形参运行后会让promise实例处于<code>reject</code>状态，所以我们一般给第一个形参命名为<code>reject</code>,约定<code>reject</code>为失败状态。</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let promise = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(()=&gt;&#123;</div><div class="line">        resolve(&apos;resolve&apos;);</div><div class="line">    &#125;,2000)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h5 id="写一个实例"><a href="#写一个实例" class="headerlink" title="写一个实例"></a>写一个实例</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;use strict&apos;</div><div class="line">let p = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">  setTimeout(()=&gt;&#123;</div><div class="line">    //resolve(&apos;通过&apos;);//下面就会走then</div><div class="line">    reject(&apos;拒绝&apos;);//下面就会走catch</div><div class="line">  &#125;,3000)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">p.then((value)=&gt;&#123;</div><div class="line">  console.log(value,&apos;:成功！&apos;);//3秒之后resolve之后才then成功; //通过:成功！</div><div class="line">&#125;).catch((err)=&gt;&#123;</div><div class="line">  console.error(err:,&apos;捕获失败！&apos;);  //拒绝: 捕获失败！</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">  setTimeout(()=&gt;&#123;</div><div class="line">    resolve(&apos;通过&apos;);</div><div class="line">  &#125;,3000)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">//可以简写成</div><div class="line">let p = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">  setTimeout(resolve,3000,&apos;通过&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h5 id="Promise构造函数上的方法："><a href="#Promise构造函数上的方法：" class="headerlink" title="Promise构造函数上的方法："></a>Promise构造函数上的方法：</h5><ul>
+<li><p>[1] <code>Promise.all(Array)</code>返回一个promise,等待参数中所有的promise都处于resolve状态后会触发,返回promise实例的resolve状态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let proimse1 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,1000,&apos;proimse1&apos;);</div><div class="line">&#125;);</div><div class="line">let proimse2 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,3000,&apos;proimse2&apos;);</div><div class="line">&#125;);</div><div class="line">let proimse3 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,2000,&apos;proimse3&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Promise.all([proimse1,proimse2,proimse3])</div><div class="line">.then((value)=&gt;&#123;</div><div class="line">  console.log(value);//[&quot;proimse1&quot;, &quot;proimse2&quot;, &quot;proimse3&quot;]</div><div class="line">  debugger;</div><div class="line">&#125;).catch((err)=&gt;&#123;</div><div class="line">  console.log(err);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">注：若其中一个为reject，那整个都失败了。</div></pre></td></tr></table></figure>
+</li>
+<li><p>[2] <code>Promise.race(Array)</code>返回一个promise,等待参数中任何一个promise<code>先变成</code>resolve就会触发。（最快的一个resolve触发then）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let proimse1 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,4000,&apos;proimse1&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">let proimse2 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,3000,&apos;proimse2&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">let proimse3 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,2000,&apos;proimse3&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Promise.race([proimse1,proimse2,proimse3]).then((value)=&gt;&#123;</div><div class="line">  console.log(value); //proimse3</div><div class="line">&#125;).catch((err)=&gt;&#123;</div><div class="line">  console.log(err);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>[3] <code>Promise.resolve()</code>立即返回一个resolve状态的实例。</p>
+<p>  Demo1:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = Promise.resolve(&apos;success&apos;);</div><div class="line">p1.then((value)=&gt;&#123;</div><div class="line">    console.log(value);</div><div class="line">&#125;)  //返回的是状态为resolve的promise   </div><div class="line"></div><div class="line"></div><div class="line">new Promise(()=&gt;&#123;</div><div class="line"></div><div class="line">&#125;)  //返回的是状态为pending的promise</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = Promise.resolve(&apos;success&apos;);</div><div class="line"></div><div class="line">//是下面这个promise的简写</div><div class="line"></div><div class="line">let p1 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    resolve(&apos;success&apos;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>  Demo2:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">  setTimeout(resolve,1000,&apos;成功！&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">let p2 = Promise.resolve(p1);</div><div class="line">p2.then((value)=&gt;&#123;</div><div class="line">  console.log(value); //成功！</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>  Demo3:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//类promise对象</div><div class="line">let thenobj = &#123;&#125;;</div><div class="line">thenobj.then = (resolve,reject)=&gt;&#123;</div><div class="line">  setTimeout(resolve,1000,&apos;成功！&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let p1 = Promise.resolve(thenobj);</div><div class="line">p1.then((value)=&gt;&#123;</div><div class="line">   console.log(value); //成功！</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>  Demo4:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = Promise.resolve();</div><div class="line">p1.then((value)=&gt;&#123;</div><div class="line">  console.log(value); //undefined</div><div class="line">  //debugger;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>[4] <code>Promise.reject()</code>立即返回一个reject状态的实例。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = Promise.reject(&apos;err&apos;);</div><div class="line">p1.catch((error)=&gt;&#123;</div><div class="line">  console.log(error);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>[5] <code>Promise.then()</code>的执行时机。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = Promise.resolve(&apos;chenggong&apos;);</div><div class="line">p1.then((value)=&gt;&#123;</div><div class="line">  console.log(value); //后执行  因为then是处理异步的；</div><div class="line">&#125;)</div><div class="line">console.log(&apos;saaadfsadf&apos;); //先执行</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p2 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">  console.log(&apos;inpromise&apos;);   //顺序1</div><div class="line">  resolve(&apos;chenggongle&apos;);</div><div class="line">&#125;);</div><div class="line">p2.then((value)=&gt;&#123;</div><div class="line">  console.log(value);   //顺序3</div><div class="line">&#125;);</div><div class="line">console.log(&apos;outpromise&apos;);    //顺序2</div><div class="line">setTimeout(()=&gt;&#123;</div><div class="line">  console.log(&apos;settimeout&apos;);    //顺序4</div><div class="line">&#125;,0);</div></pre></td></tr></table></figure>
+<ul>
+<li>[6] Promise的链式调用。<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let p1 = new Promise((resolve,reject)=&gt;&#123;</div><div class="line">  setTimeout(resolve,1000,&apos;chenggongle&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">p1.then((value)=&gt;&#123;</div><div class="line">  console.log(&apos;1then&apos;,value);   //1then chenggongle</div><div class="line">  return 111; // 传给下一个then</div><div class="line">&#125;).then((value)=&gt;&#123;</div><div class="line">  console.log(&apos;2then&apos;,value);   //2then 111</div><div class="line">  return Promise.reject(&apos;1err&apos;);//传给下一个catch</div><div class="line">&#125;).catch((err)=&gt;&#123;</div><div class="line">  console.error(&apos;1catch&apos;,err);  //1catch 1err</div><div class="line">  return Promise.resolve(&apos;3then&apos;)//传给下一个then</div><div class="line">&#125;).then((value)=&gt;&#123;</div><div class="line">  console.log(value)    //3then</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="十，Generator"><a href="#十，Generator" class="headerlink" title="十，Generator"></a>十，Generator</h3><blockquote>
+<ul>
+<li>1,有点像一个函数内部有多个函数，是一个状态机</li>
+<li>2,generator 生成器</li>
+<li>3,yield 生成</li>
+</ul>
+</blockquote>
+<h5 id="1-实例"><a href="#1-实例" class="headerlink" title="1,实例"></a>1,实例</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">function* gen()&#123;  //function* 定义一个generator函数</div><div class="line">  yield &apos;hello&apos;;</div><div class="line">  yield &apos;ni&apos;;</div><div class="line">  yield &apos;hao&apos;;</div><div class="line"></div><div class="line">  return &apos;end&apos;;</div><div class="line">&#125;</div><div class="line">//Genertor 返回的不是一个返回值也不是第一个生成的内容</div><div class="line">//迭代器是一个可以遍历的对象</div><div class="line">let res = gen();</div><div class="line"></div><div class="line">//next() 是一个固定的属性</div><div class="line">console.log(res.next());  //&#123;value: &quot;hello&quot;, done: false&#125;</div><div class="line">console.log(res.next());  //&#123;value: &quot;ni&quot;, done: false&#125;</div><div class="line">console.log(res.next());  //&#123;value: &quot;hao&quot;, done: false&#125;</div><div class="line">console.log(res.next());  //&#123;value: &quot;end&quot;, done: true&#125;</div><div class="line">console.log(res.next());  //&#123;value: undefined, done: true&#125; 迭代完了 所以done为true</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">function* gen()&#123;  //function* 定义一个generator函数</div><div class="line">  yield &apos;hello&apos;;</div><div class="line">  yield &apos;ni&apos;;</div><div class="line">  yield &apos;hao&apos;;</div><div class="line"></div><div class="line">  return &apos;end&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//generator是个迭代器  所以可以用for of来实现；</div><div class="line"></div><div class="line"> for (let item of res) &#123;</div><div class="line">   console.log(item);  //hello ni hao !</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">console.log([...res]);  //[&quot;hello&quot;, &quot;ni&quot;, &quot;hao&quot;]</div></pre></td></tr></table></figure>
+<h5 id="2-连续运行的Generator："><a href="#2-连续运行的Generator：" class="headerlink" title="2,连续运行的Generator："></a>2,连续运行的Generator：</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">function* genfun(inv)&#123;</div><div class="line">  let one = yield new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,1000,&apos;one:&apos;+ inv);</div><div class="line">  &#125;);</div><div class="line">  let two = yield new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,500,&apos;two:&apos;+ one);</div><div class="line">  &#125;);</div><div class="line">  let three = yield new Promise((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,2000,&apos;three:&apos;+ two);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let res = genfun(&apos;initt&apos;);</div><div class="line"></div><div class="line">//console.log(res.next().value);</div><div class="line">res.next().value.then((val)=&gt;&#123;</div><div class="line">  console.log(val);</div><div class="line">  res.next(val).value.then((val)=&gt;&#123;</div><div class="line">    console.log(val);</div><div class="line">    res.next(val).value.then((val)=&gt;&#123;</div><div class="line">      console.log(val);</div><div class="line">    &#125;)</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="2016/12/24/Es6教程/"
+                    data-title="Es6教程"
+                    data-url="http://niudaye.github.io/2016/12/24/Es6教程/"
+                    data-images=""
+                    data-content="
+
+‘use strict’;    在低版本浏览器下只是一个字符串不会报错在高版本浏览器下严... | 度 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/08/25/node中的模块/" data-toggle="tooltip" data-placement="top" title="node.Js 中的模块">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/12/24/Es6教程/"
+                        data-title="Es6教程"
+                        data-url="http://niudaye.github.io/2016/12/24/Es6教程/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一，let和const"><span class="toc-text">一，let和const</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-块级作用域"><span class="toc-text">1,块级作用域</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-关于let"><span class="toc-text">2,关于let</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-关于const"><span class="toc-text">3,关于const</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二，解构赋值"><span class="toc-text">二，解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-示例"><span class="toc-text">1,示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对象的解构赋值"><span class="toc-text">2,对象的解构赋值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三，闭包的区别"><span class="toc-text">三，闭包的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-正常js的闭包的写法"><span class="toc-text">1,正常js的闭包的写法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-es6闭包"><span class="toc-text">2,es6闭包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四，函数"><span class="toc-text">四，函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-作用域的隔离"><span class="toc-text">1,作用域的隔离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-箭头函数"><span class="toc-text">2,箭头函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-箭头函数的this关键字"><span class="toc-text">3,箭头函数的this关键字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五，第七种数据类型Symbol"><span class="toc-text">五，第七种数据类型Symbol</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-模板字符串"><span class="toc-text">1,模板字符串</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六，数组"><span class="toc-text">六，数组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-数组拷贝slice和es6属性Array-from"><span class="toc-text">1,数组拷贝slice和es6属性Array.from</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Array-of-新建数组"><span class="toc-text">2,Array.of 新建数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Array-copyWithin-复制并替换数组某一块"><span class="toc-text">3,Array.copyWithin 复制并替换数组某一块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-Array-fill-复制并替换数组某一块"><span class="toc-text">4,Array.fill 复制并替换数组某一块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-find-查找元素-和-findIndex-查找元素下标"><span class="toc-text">5,find 查找元素 和 findIndex 查找元素下标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-includes-查找元素-找到返回true-找不到返回false"><span class="toc-text">6,includes 查找元素  找到返回true 找不到返回false</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-keys获取下标和entries获取下标及对应值"><span class="toc-text">7,keys获取下标和entries获取下标及对应值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七，对象"><span class="toc-text">七，对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-简写"><span class="toc-text">1,简写</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-区别"><span class="toc-text">2,区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-is-更严格更合理的值相等"><span class="toc-text">3,is 更严格更合理的值相等</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-对象的合并"><span class="toc-text">4,对象的合并</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八，Set和map"><span class="toc-text">八，Set和map</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Set-add-delete-has-clear"><span class="toc-text">1,Set (add delete has clear)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Set实现js中的集合运算"><span class="toc-text">2,Set实现js中的集合运算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-map-和set的用法是一样的"><span class="toc-text">3,map 和set的用法是一样的</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九，promise"><span class="toc-text">九，promise</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#如何构造一个promise？"><span class="toc-text">如何构造一个promise？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#写一个实例"><span class="toc-text">写一个实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Promise构造函数上的方法："><span class="toc-text">Promise构造函数上的方法：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十，Generator"><span class="toc-text">十，Generator</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-实例"><span class="toc-text">1,实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-连续运行的Generator："><span class="toc-text">2,连续运行的Generator：</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display:none;">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                <h5 class="text-center">
+                    <a href="/tags/">FEATURED TAGS</a>
+                </h5>
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Es6" title="Es6">Es6</a>
+                        
+                          <a class="tag" href="/tags/#教程" title="教程">教程</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5 class="text-center">FRIENDS</h5>
+                <ul class="list-inline text-center">
+
+                    
+                        <li><a href="http://qianduandu.com">前端度</a></li>
+                    
+                        <li><a href="https://niudaye.github.io/du">NIUYULEI</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'qianduandu';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center" style="display:none;">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/qianduandu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/niuyulei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/NiuDaYe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Du 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_bank" href="https://niudaye.github.io/">度</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://niudaye.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '098c926d03f4d898ae7908eb186be435';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDu.jpg">
+</body>
+
+</html>

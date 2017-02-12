@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="度在 Github 上的个人博客">
+    <meta name="keyword"  content="qianduandu,前端度,度,牛玉磊,前端开发# seo key words">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          FIS - 前端工程构建工具｜度
+        
+    </title>
+
+    <link rel="canonical" href="http://niudaye.github.io/2017/02/12/FIS-前端工程构建工具/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Du
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDuBg.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>FIS - 前端工程构建工具</h1>
+                    
+                        <h2 class="subheading">解决前端开发中自动化工具、性能优化、模块化框架、开发规范、代码部署、开发流程等问题</h2>
+                    
+                    <span class="meta">
+                         作者 度
+                         <span>
+                          日期 2017-02-12
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#fis" title="fis">fis</a>
+                        
+                        <a class="tag" href="/tags/#构建工具" title="构建工具">构建工具</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            FIS - 前端工程构建工具
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="Fis简介"><a href="#Fis简介" class="headerlink" title="Fis简介"></a>Fis简介</h1><blockquote>
+<p>FIS 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。</p>
+</blockquote>
+<h1 id="一-安装nodejs-和-npm"><a href="#一-安装nodejs-和-npm" class="headerlink" title="一, 安装nodejs 和 npm;"></a>一, 安装nodejs 和 npm;</h1><h1 id="二-启动并编译项目"><a href="#二-启动并编译项目" class="headerlink" title="二, 启动并编译项目;"></a>二, 启动并编译项目;</h1><blockquote>
+<ol>
+<li>fis server start   启动8080端口；<br> fis server stop 关闭项目</li>
+<li>fis server open   打开8080端口所在目录；</li>
+<li>cd 到本地项目目录   执行 fis release<br>命令会将编译项目并发布至本地调试服务器。</li>
+</ol>
+</blockquote>
+<ul>
+<li><code>npm server -h</code>  查看帮助；</li>
+<li><code>fis release -m</code>  加MD5并发布至本地调试服务器；</li>
+<li><code>fis release -o</code>  压缩静态资源并发布至本地调试服务器；</li>
+<li><code>fis release -omd ./pkg</code> 压缩、加MD5并发送到pkg文件夹内；</li>
+<li><code>fis release -p</code> 资源合并并发布至本地调试服务器；</li>
+<li><code>fis release -pd ./pkg</code> 资源合并并发送到pkg文件夹内</li>
+</ul>
+<h1 id="三-fis-静态资源MD5版本"><a href="#三-fis-静态资源MD5版本" class="headerlink" title="三, fis 静态资源MD5版本"></a>三, fis 静态资源MD5版本</h1><pre><code>FIS能够根据静态资源的内容自动生成文件版本，自动更新资源引用路径，解决缓存更新问题，告别手动更新时间戳。
+我们通过开启 --md5 参数，为项目中的静态资源添加md5版本号
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release --optimize --md5    //fis release -m</div></pre></td></tr></table></figure>
+<p>刷新页面，我们可以看到所有资源均加上了md5版本号</p>
+<h1 id="四-fis-静态资源压缩"><a href="#四-fis-静态资源压缩" class="headerlink" title="四, fis 静态资源压缩"></a>四, fis 静态资源压缩</h1><pre><code>资源压缩一直是前端项目优化中非常重要的一环，使用FIS我们无需任何配置，只需要一个命令就可以完成压缩工作。
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release --optimize  //fis release -o</div></pre></td></tr></table></figure>
+<p>FIS构建并不会修改源代码目录中的内容，而是拥有独立的产出的目录，FIS默认的产出目构录可以通过 fis server open 打开，你也可以通过 fis release -d <path to="" output=""></path> 指定你希望的输出目录:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -od ./pkg    //资源压缩并发送到pkg文件夹内</div></pre></td></tr></table></figure>
+<p>查看网站的静态资源,我们会发现脚本、样式、图片资源都已经压缩完成。无需额外的插件和配置编写，一条命令就完成了压缩工作。</p>
+<h1 id="五-静态资源合并"><a href="#五-静态资源合并" class="headerlink" title="五, 静态资源合并"></a>五, 静态资源合并</h1><h5 id="1，设置打包"><a href="#1，设置打包" class="headerlink" title="1，设置打包"></a>1，设置打包</h5><pre><code>FIS可以通过pack来进行资源文件的合并，比如我们需要将DEMO中的公共库文件打包在一起，可以修改 fis-conf.js 配置，加入pack配置
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis.config.set(</div><div class="line">    &apos;pack&apos;,&#123;</div><div class="line">        &apos;pkg/lib.js&apos;:[ &apos;/js/**.js&apos; ],</div><div class="line">        &apos;pkg/aio.css&apos;:[ &apos;/css/**.css&apos; ]</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>设置完pack后，FIS默认只会进行文件打包，不会对页面中的静态资源引用进行替换，我们可以通过引入后端静态资源管理来加载打包模块。不过也可以利用<code>fis-postpackager-simple</code>插件，可以自动将页面中独立的资源引用替换为打包资源。</p>
+<h5 id="2，安装插件"><a href="#2，安装插件" class="headerlink" title="2，安装插件"></a>2，安装插件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm install fis-postpackager-simple -g；</div></pre></td></tr></table></figure>
+<p> 然后 配置fis-conf.js ：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis.config.set(&quot;modules.postpackager&quot;,&quot;simple&quot;);//启用资源打包插件</div></pre></td></tr></table></figure></p>
+<h5 id="3，应用打包"><a href="#3，应用打包" class="headerlink" title="3，应用打包"></a>3，应用打包</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release --pack   //fis release -p</div></pre></td></tr></table></figure>
+<p>发布到调试目录下运行，可以看到已经引用了打包后的资源文件；<br>注：为了开发调试时更加方便 <code>fis release</code>默认不会合并资源，在<code>fis release -p</code>后，FIS才会进行打包合并处理。</p>
+<h5 id="4，自动打包"><a href="#4，自动打包" class="headerlink" title="4，自动打包"></a>4，自动打包</h5><pre><code>利用simple插件，我们还可以按页面进行自动合并，将没有通过pack设置打包的零散资源自动合并起来。
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//file : fis-conf.js</div><div class="line">//开启autoCombine可以将零散资源进行自动打包</div><div class="line">fis.config.set(&apos;settings.postpackager.simple.autoCombine&apos;, true);</div></pre></td></tr></table></figure>
+<p>再次运行FIS构建项目<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -p</div></pre></td></tr></table></figure></p>
+<p>我们会发现剩余的零散资源已经被自动合并了。</p>
+<h3 id="六-FIS-的构建（编译）即是发布当前项目到其他文件夹"><a href="#六-FIS-的构建（编译）即是发布当前项目到其他文件夹" class="headerlink" title="六,FIS 的构建（编译）即是发布当前项目到其他文件夹"></a>六,FIS 的构建（编译）即是发布当前项目到其他文件夹</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -d &lt;path&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><path></path>任意目录</li>
+<li>fis release -h 获取更多参数</li>
+</ul>
+<p>1.构建发布到项目目录的 output 目录下<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -d ./output</div></pre></td></tr></table></figure></p>
+<p>2.构建发布到项目父级目录的 dist 子目录下<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -d ../dist</div></pre></td></tr></table></figure></p>
+<p>3.发布到其他盘 （Windows）<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -d D:\output</div></pre></td></tr></table></figure></p>
+<h3 id="七-8080端口被占用"><a href="#七-8080端口被占用" class="headerlink" title="七,8080端口被占用"></a>七,8080端口被占用</h3><p>8080端口被占用的话  可以指定一个新端口启用；<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis server start -p [port]</div></pre></td></tr></table></figure></p>
+<h3 id="八-辅助开发"><a href="#八-辅助开发" class="headerlink" title="八,辅助开发"></a>八,辅助开发</h3><h5 id="语言扩展"><a href="#语言扩展" class="headerlink" title="语言扩展"></a>语言扩展</h5><pre><code>使用FIS可以方便的将各种异构语言转换为前端语言，比如说可以将CoffeeScript编译为JavaScript、Less编译为CSS、前端模板预编译等等，并且可以做到各种异构语言无缝混用。
+</code></pre><h6 id="1-less插件安装"><a href="#1-less插件安装" class="headerlink" title="1,less插件安装:"></a>1,less插件安装:</h6><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm install -g fis-parser-less</div></pre></td></tr></table></figure>
+<p>开启插件<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//file: fis-conf.js</div><div class="line"></div><div class="line">//后缀名的less的文件使用fis-parser-less编译</div><div class="line">//modules.parser.less表示设置后缀名为less的文件的parser，第二个less表示使用fis-parser-less进行编译</div><div class="line">fis.config.set(&apos;modules.parser.less&apos;, &apos;less&apos;);</div><div class="line">//将less文件编译为css</div><div class="line">fis.config.set(&apos;roadmap.ext.less&apos;, &apos;css&apos;);</div></pre></td></tr></table></figure></p>
+<p>快速使用</p>
+<pre><code>在fis-conf.js同目录编写一个LESS文件
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">body &#123;</div><div class="line">    .container &#123;</div><div class="line">        width: 980px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用发布到output目录中<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release -wd output</div></pre></td></tr></table></figure></p>
+<p>可以看到在output目录中，原有的less文件已经被编译为了css文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">body .container &#123;</div><div class="line">  width: 980px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于我们添加了 -w 参数，你还可以随意修改LESS文件，FIS将会自动监听文件修改，自动编译发布CSS文件</p>
+<h6 id="2-sass插件安装"><a href="#2-sass插件安装" class="headerlink" title="2,sass插件安装:"></a>2,sass插件安装:</h6><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm install fis-parser-node-sass -g</div></pre></td></tr></table></figure>
+<p>fis2开启插件:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis.config.set(&apos;modules.parser.sass&apos;, &apos;node-sass&apos;);</div><div class="line">fis.config.set(&apos;modules.parser.scss&apos;, &apos;node-sass&apos;);</div><div class="line"></div><div class="line">fis.config.set(&apos;roadmap.ext.sass&apos;, &apos;css&apos;);</div><div class="line">fis.config.set(&apos;roadmap.ext.scss&apos;, &apos;css&apos;);</div><div class="line"></div><div class="line">fis.config.set(&apos;settings.parser.node-sass&apos;, &#123;</div><div class="line">    // 加入文件查找目录</div><div class="line">    include_paths: [ ]</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h6 id="3-自动化文件监视"><a href="#3-自动化文件监视" class="headerlink" title="3,自动化文件监视"></a>3,自动化文件监视</h6><pre><code>通过文件监视功能，我们可以要求FIS在项目文件出现修改时，自动增量构建项目文件。并且增量构建是考虑了各种嵌入关系的，比如a.css文件内嵌了b.css文件，那么当b.css文件修改时，FIS会自动重新构建a.css和b.css两个文件。
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release --watch #fis release -w</div></pre></td></tr></table></figure>
+<p>随意修改项目内容，返回页面刷新即可查看到相应的变化。</p>
+<h6 id="4-自动刷新"><a href="#4-自动刷新" class="headerlink" title="4,自动刷新"></a>4,自动刷新</h6><p>我们只需要在文件监视的参数基础上添加 –live 或 -L 参数即可实现在项目文件发生修改后，自动刷新页面的功能，大幅提高页面制作效率。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis release --watch --live #fis release -wL</div></pre></td></tr></table></figure>
+<p>随意修改项目内容，页面将会应用修改并自动刷新。</p>
+<h3 id="九-资源定位"><a href="#九-资源定位" class="headerlink" title="九,资源定位"></a>九,资源定位</h3><h5 id="html资源定位"><a href="#html资源定位" class="headerlink" title="html资源定位"></a>html资源定位</h5><p>添加配置，调整文件发布路径：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis.config.merge(&#123;</div><div class="line">    roadmap : &#123;</div><div class="line">        path : [</div><div class="line">            &#123;</div><div class="line">                //所有的js文件</div><div class="line">                reg : &apos;**.js&apos;,</div><div class="line">                //发布到/static/js/xxx目录下</div><div class="line">                release : &apos;/static/js$&amp;&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                //所有的css文件</div><div class="line">                reg : &apos;**.css&apos;,</div><div class="line">                //发布到/static/css/xxx目录下</div><div class="line">                release : &apos;/static/css$&amp;&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                //所有image目录下的.png，.gif文件</div><div class="line">                reg : /^\/images\/(.*\.(?:png|gif))/i,</div><div class="line">                //发布到/static/pic/xxx目录下</div><div class="line">                release : &apos;/static/pic/$1&apos;</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>编译得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!--源码：</div><div class="line">&lt;img title=&quot;百度logo&quot; src=&quot;images/logo.gif&quot;/&gt;</div><div class="line">编译后--&gt;</div><div class="line">&lt;img title=&quot;百度logo&quot; src=&quot;/static/pic/logo_74e5229.gif&quot;/&gt;</div><div class="line"></div><div class="line">&lt;!--源码：</div><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;demo.css&quot;&gt;</div><div class="line">编译后--&gt;</div><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/static/css/demo_7defa41.css&quot;&gt;</div><div class="line"></div><div class="line">&lt;!--源码：</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;demo.js&quot;&gt;&lt;/script&gt;</div><div class="line">编译后--&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/static/js/demo_33c5143.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>我们甚至可以让 url和发布目录不一致。比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis.config.merge(&#123;</div><div class="line">    roadmap : &#123;</div><div class="line">        path : [</div><div class="line">            &#123;</div><div class="line">                //所有的js文件</div><div class="line">                reg : &apos;**.js&apos;,</div><div class="line">                //发布到/static/js/xxx目录下</div><div class="line">                release : &apos;/static/js$&amp;&apos;,</div><div class="line">                //访问url是/mm/static/js/xxx</div><div class="line">                url : &apos;/mm/static/js$&amp;&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                //所有的css文件</div><div class="line">                reg : &apos;**.css&apos;,</div><div class="line">                //发布到/static/css/xxx目录下</div><div class="line">                release : &apos;/static/css$&amp;&apos;,</div><div class="line">                //访问url是/pp/static/css/xxx</div><div class="line">                url : &apos;/pp/static/css$&amp;&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                //所有image目录下的.png，.gif文件</div><div class="line">                reg : /^\/images\/(.*\.(?:png|gif))/i,</div><div class="line">                //发布到/static/pic/xxx目录下</div><div class="line">                release : &apos;/static/pic/$1&apos;,</div><div class="line">                //访问url是/oo/static/baidu/xxx</div><div class="line">                url : &apos;/oo/static/baidu$&amp;&apos;</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>再次编译得到:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!--源码：</div><div class="line">&lt;img title=&quot;百度logo&quot; src=&quot;images/logo.gif&quot;/&gt;</div><div class="line">编译后--&gt;</div><div class="line">&lt;img title=&quot;百度logo&quot; src=&quot;/oo/static/baidu/logo_74e5229.gif&quot;/&gt;</div><div class="line"></div><div class="line">&lt;!--源码：</div><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;demo.css&quot;&gt;</div><div class="line">编译后--&gt;</div><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/pp/static/css/demo_7defa41.css&quot;&gt;</div><div class="line"></div><div class="line">&lt;!--源码：</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;demo.js&quot;&gt;&lt;/script&gt;</div><div class="line">编译后--&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/mm/static/js/demo_33c5143.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h5 id="JS资源定位"><a href="#JS资源定位" class="headerlink" title="JS资源定位"></a>JS资源定位</h5><pre><code>js语言中，可以使用编译函数 `__uri(path)` 来定位资源，fis分析js文件或 html中的script标签内内容 时会替换该函数所指向文件的线上url路径。
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码:</div><div class="line">var img = __uri(&apos;images/logo.gif&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">var img = &apos;/images/logo_74e5229.gif&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码:</div><div class="line">var css = __uri(&apos;demo.css&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">var css = &apos;/demo_7defa41.css&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码:</div><div class="line">var js = __uri(&apos;demo.js&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">var js = &apos;/demo_33c5143.js&apos;;</div></pre></td></tr></table></figure>
+<h5 id="在css中定位资源"><a href="#在css中定位资源" class="headerlink" title="在css中定位资源"></a>在css中定位资源</h5><pre><code>fis编译工具会识别css文件或 html的style标签内容 中 url(path) 以及 src=path 字段，并将其替换成对应资源的编译后url路径
+</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">@import url(&apos;demo.css&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">@import url(&apos;/demo_7defa41.css&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">.style &#123;</div><div class="line">    background: url(&apos;images/body-bg.png&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">编译后</div><div class="line">.style &#123;</div><div class="line">    background: url(&apos;/images/body-bg_1b8c3e0.png&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>资源定位结果可以被fis的配置文件控制，比如添加配置，调整文件发布路径：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fis.config.merge(&#123;</div><div class="line">    roadmap : &#123;</div><div class="line">        path : [</div><div class="line">            &#123;</div><div class="line">                //所有的css文件</div><div class="line">                reg : &apos;**.css&apos;,</div><div class="line">                //发布到/static/css/xxx目录下</div><div class="line">                release : &apos;/static/css$&amp;&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                //所有image目录下的.png，.gif文件</div><div class="line">                reg : /^\/images\/(.*\.(?:png|gif))/i,</div><div class="line">                //发布到/static/pic/xxx目录下</div><div class="line">                release : &apos;/static/pic/$1&apos;</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>再次编译得到：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">@import url(&apos;demo.css&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">@import url(&apos;/static/css/demo_7defa41.css&apos;);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">.style &#123;</div><div class="line">    background: url(&apos;images/body-bg.png&apos;);</div><div class="line">    background: url(&apos;/static/pic/body-bg_1b8c3e0.png&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">编译后</div><div class="line">.style &#123;</div><div class="line">    background: url(&apos;/static/pic/body-bg_1b8c3e0.png&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="10-内容嵌入"><a href="#10-内容嵌入" class="headerlink" title="10, 内容嵌入"></a>10, 内容嵌入</h3><h5 id="在html中嵌入资源"><a href="#在html中嵌入资源" class="headerlink" title="在html中嵌入资源"></a>在html中嵌入资源</h5><pre><code>在html中可以嵌入其他文件内容或者base64编码值，可以在资源定位的基础上，给资源加 `?__inline` 参数来标记资源嵌入需求。
+</code></pre><blockquote>
+<ul>
+<li><p>html中嵌入图片base64 :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">&lt;img title=&quot;百度logo&quot; src=&quot;images/logo.gif?__inline&quot;/&gt;</div><div class="line"></div><div class="line">编译后</div><div class="line">&lt;img title=&quot;百度logo&quot; src=&quot;data:image/gif;base64,R0lGODlhDgGBALMAAGBn6eYxLvvy9PnKyfO...Jzna6853wjKc850nPeoYgAgA7&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>html中嵌入样式文件 :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;demo.css?__inline&quot;&gt;</div><div class="line"></div><div class="line">编译后</div><div class="line">&lt;style&gt;img &#123; border: 5px solid #ccc; &#125;&lt;/style&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>html中嵌入脚本资源 :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;demo.js?__inline&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">编译后</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;console.log(&apos;inline file&apos;);&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>html中嵌入页面文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码（推荐使用）：</div><div class="line">&lt;link rel=&quot;import&quot; href=&quot;demo.html?__inline&quot;&gt;</div><div class="line"></div><div class="line">编译后</div><div class="line">&lt;h1&gt;demo.html content&lt;/h1&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="在js中嵌入资源"><a href="#在js中嵌入资源" class="headerlink" title="在js中嵌入资源"></a>在js中嵌入资源</h5><pre><code>在js中，使用编译函数 `__inline()` 来提供内容嵌入能力。可以利用这个函数嵌入图片的base64编码、嵌入其他js或者前端模板文件的编译内容， 这些处理对html中script标签里的内容同样有效。
+</code></pre><blockquote>
+<ul>
+<li><p>在js中嵌入js文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">__inline(&apos;demo.js&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">console.log(&apos;demo.js content&apos;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>在js中嵌入图片base64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">var img = __inline(&apos;images/logo.gif&apos;);</div><div class="line"></div><div class="line">编译后：</div><div class="line">var img = &apos;data:image/gif;base64,R0lGODlhDgGBALMAAGBn6eYxLvvy9PnKyfO...Jzna6853wjKc850nPeoYgAgA7&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在js中嵌入其他文本文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">var css = __inline(&apos;a.css&apos;);</div><div class="line"></div><div class="line">编译后：</div><div class="line">var css = &quot;body \n&#123;    color: red;\n&#125;&quot;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="在css中嵌入资源"><a href="#在css中嵌入资源" class="headerlink" title="在css中嵌入资源"></a>在css中嵌入资源</h5><pre><code>与html类似，凡是命中了资源定位能力的编译标记， 除了src=&quot;xxx&quot;之外，都可以通过添加 `?__inline` 编译标记都可以把文件内容嵌入进来。src=&quot;xxx&quot; 被用在ie浏览器支持的filter内，该属性不支持base64字符串，因此未做处理。
+</code></pre><blockquote>
+<ul>
+<li><p>在css文件中嵌入其他css文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">@import url(&apos;demo.css?__inline&apos;);</div><div class="line"></div><div class="line">编译后</div><div class="line">img &#123; border: 5px solid #ccc; &#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在css中嵌入图片的base64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">源码：</div><div class="line">.style &#123;</div><div class="line">    background: url(images/logo.gif?__inline);</div><div class="line">&#125;</div><div class="line"></div><div class="line">编译后</div><div class="line">.style &#123;</div><div class="line">    background: url(data:image/gif;base64,R0lGODlhDgGBALMAAGBn6eYxLvvy9PnKyfO...Jzna6853wjKc850nPeoYgAgA7);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="2017/02/12/FIS-前端工程构建工具/"
+                    data-title="FIS - 前端工程构建工具"
+                    data-url="http://niudaye.github.io/2017/02/12/FIS-前端工程构建工具/"
+                    data-images=""
+                    data-content="Fis简介
+FIS 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按... | 度 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/12/24/Es6教程/" data-toggle="tooltip" data-placement="top" title="ECMAScript 6 教程">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2017/02/12/FIS-前端工程构建工具/"
+                        data-title="FIS - 前端工程构建工具"
+                        data-url="http://niudaye.github.io/2017/02/12/FIS-前端工程构建工具/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Fis简介"><span class="toc-text">Fis简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一-安装nodejs-和-npm"><span class="toc-text">一, 安装nodejs 和 npm;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-启动并编译项目"><span class="toc-text">二, 启动并编译项目;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-fis-静态资源MD5版本"><span class="toc-text">三, fis 静态资源MD5版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四-fis-静态资源压缩"><span class="toc-text">四, fis 静态资源压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五-静态资源合并"><span class="toc-text">五, 静态资源合并</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1，设置打包"><span class="toc-text">1，设置打包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2，安装插件"><span class="toc-text">2，安装插件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3，应用打包"><span class="toc-text">3，应用打包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4，自动打包"><span class="toc-text">4，自动打包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六-FIS-的构建（编译）即是发布当前项目到其他文件夹"><span class="toc-text">六,FIS 的构建（编译）即是发布当前项目到其他文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七-8080端口被占用"><span class="toc-text">七,8080端口被占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八-辅助开发"><span class="toc-text">八,辅助开发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#语言扩展"><span class="toc-text">语言扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-less插件安装"><span class="toc-text">1,less插件安装:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-sass插件安装"><span class="toc-text">2,sass插件安装:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-自动化文件监视"><span class="toc-text">3,自动化文件监视</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-自动刷新"><span class="toc-text">4,自动刷新</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九-资源定位"><span class="toc-text">九,资源定位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#html资源定位"><span class="toc-text">html资源定位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JS资源定位"><span class="toc-text">JS资源定位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在css中定位资源"><span class="toc-text">在css中定位资源</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-内容嵌入"><span class="toc-text">10, 内容嵌入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#在html中嵌入资源"><span class="toc-text">在html中嵌入资源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在js中嵌入资源"><span class="toc-text">在js中嵌入资源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在css中嵌入资源"><span class="toc-text">在css中嵌入资源</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display:none;">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                <h5 class="text-center">
+                    <a href="/tags/">FEATURED TAGS</a>
+                </h5>
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#fis" title="fis">fis</a>
+                        
+                          <a class="tag" href="/tags/#构建工具" title="构建工具">构建工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5 class="text-center">FRIENDS</h5>
+                <ul class="list-inline text-center">
+
+                    
+                        <li><a href="http://qianduandu.com">前端度</a></li>
+                    
+                        <li><a href="https://niudaye.github.io/du">NIUYULEI</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'qianduandu';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center" style="display:none;">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/qianduandu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/niuyulei">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/NiuDaYe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Du 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_bank" href="https://niudaye.github.io/">度</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://niudaye.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '098c926d03f4d898ae7908eb186be435';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDuFavicon.jpg">
+</body>
+
+</html>

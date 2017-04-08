@@ -1,2 +1,2 @@
-# NiuDaYe.github.io
+# 博客
 hexo搭建的一个blog,用来记录所学知识点！

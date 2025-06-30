@@ -1,639 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html lang="zh">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="度在 Github 上的个人博客">
-    <meta name="keyword"  content="qianduandu,前端度,度,牛玉磊,前端开发# seo key words">
-    <meta name="theme-color" content="#600090">
-    <meta name="msapplication-navbutton-color" content="#600090">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
-    <link rel="shortcut icon" href="/img/coffee.png">
-
-    <title>
-        
-          度
-        
-    </title>
-
-    <link rel="canonical" href="http://niudaye.github.io/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/blog-style.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>度</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #0a0f1c;
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+    }
+    #bgCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #ccc;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px #ccc;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #cfd8dc;
+      max-width: 600px;
+      line-height: 1.6;
+      min-height: 3em;
+    }
+    .typed-text {
+      display: inline;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .socials {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .socials a {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.4rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .socials a:hover {
+      border: 2px solid #ccc;
+      background: #ccc;
+      color: #0a0f1c;
+      transform: scale(1.1);
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      p { font-size: 0.95rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <div class="container">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="头像" />
+    <h1>你好，我是度</h1>
+    <p><span id="typed" class="typed-text"></span></p>
+    <div class="socials">
+      <a href="https://github.com/niudaye" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/niuyulei" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:41508304@qq.com" title="邮箱"><i class="fas fa-envelope"></i></a>
+      <a href="tencent://message/?uin=41508304" title="QQ"><i class="fab fa-qq"></i></a>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
 
-<style>
+    const particlesCount = 1000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particlesCount * 3);
 
-    header.intro-header{
-        background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 200;
     }
-</style>
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
-" data-ishome = "true" >
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">
-                <span class="brand-logo">
-                    Du度
-                </span>
-                's Blog
-            </a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <!-- /.navbar-collapse -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const material = new THREE.PointsMaterial({ color: 0xcccccc, size: 1 });
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
 
-                    
-                        
-                        <li>
-                            <a href="/Tags/">Tags</a>
-                        </li>
-                        
-                    
+    camera.position.z = 60;
 
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
+    const clock = new THREE.Clock();
+    function animate() {
+      const elapsed = clock.getElapsedTime();
+      particles.rotation.y = elapsed * 0.05;
+      particles.rotation.x = elapsed * 0.01;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
     }
-</script>
+    animate();
 
-    <!-- Main Content -->
-    
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 
-    <style>
+    // 打字机效果
+    const phrases = [
+      "热爱编程，探索未来。",
+      "专注前端，追求极致体验。",
+      "用代码点亮科技之光。"
+    ];
+    let i = 0;
+    let j = 0;
+    let currentPhrase = [];
+    let isDeleting = false;
+    let isEnd = false;
 
-        .custom-haojen-container .post-preview:nth-of-type(1),
-        .custom-haojen-container .post-preview-poetry:nth-of-type(1){
-            text-align: center;
-            background-repeat: no-repeat;
-            border-radius: 3px;
-            background-size: cover;
-            padding:0;
-            height: 300px;
-            display: table;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.16);
+    function typeLoop() {
+      const typedElement = document.getElementById("typed");
+      typedElement.innerHTML = currentPhrase.join("");
+
+      if (i < phrases.length) {
+        if (!isDeleting && j <= phrases[i].length) {
+          currentPhrase.push(phrases[i][j]);
+          j++;
         }
-        /*去掉诗歌的背景图片*/
-        .custom-haojen-container .post-preview-poetry:nth-of-type(1){
-            background-image: none!important;
-            background-color: rgba(255, 248, 220, 0.5);
+        if (isDeleting && j >= 0) {
+          currentPhrase.pop();
+          j--;
         }
-
-        .custom-haojen-container .post-preview:nth-child(1) h2,
-        .custom-haojen-container .post-preview:nth-child(1) .post-meta,
-        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
-            text-shadow: 0 0 40px rgba(0, 0, 0, 1);
-            letter-spacing: 1px;
-            color: #fff;
-            font-family: unset;
-            font-weight: 500;
-            margin-top: 0;
-            padding-left: 60px;
-            padding-right: 60px;
+        if (j === phrases[i].length) {
+          isEnd = true;
+          isDeleting = true;
         }
-
-        .custom-haojen-container .post-preview:nth-child(1) .post-meta{
-            font-size: .9em;
-            font-weight: 300;
-            margin-top: 0;
+        if (isDeleting && j === 0) {
+          currentPhrase = [];
+          isDeleting = false;
+          i++;
+          if (i === phrases.length) i = 0;
         }
-        .custom-haojen-container .post-preview-poetry:nth-child(1) .post-subtitle{
-            letter-spacing: 6px;
-            font-size: 18px;
-            font-family: unset;
-            font-weight: 400;
-            color: rgba(0,0,0,.75)
-        }
-        /*不显示摘要*/
-        .custom-haojen-container .post-preview:nth-child(1) .post-content-preview{display: none}
-        /*只第一个显示背景图片*/
-        .custom-haojen-container .post-preview:not(:nth-child(1)){
-            background-image: none!important;
-        }
-        /*第一个分界线去掉*/
-        .custom-haojen-container hr:nth-of-type(1){
-            display: none;
-        }
-        /*主题*/
-        .custom-haojen-container .post-preview:nth-of-type(1)>a{
-            display: table-cell;
-            vertical-align: middle;
-        }
-        /*诗词标题*/
-        .custom-haojen-container .post-preview-poetry:nth-child(1) h2{
-            font-size: 35px;
-            font-family:  STKaiti;
-            color: rgba(0,0,0,.8);
-        }
-        .custom-haojen-container .post-preview-poetry:nth-of-type(1) .post-meta{
-            color: #0e2231;
-        }
-        @media (max-width: 768px)  {
-            .custom-haojen-container .post-preview:nth-child(1) {
-                height: 240px;
-            }
-            .custom-haojen-container .post-preview-poetry:nth-child(1) h2{
-                font-size: 28px!important;
-                margin-top: 0;
-            }
-            .custom-haojen-container .post-preview:nth-child(1) .post-subtitle{
-                font-size: 18px;
-                font-weight:400;
-                padding-left: 0;padding-right: 0;
-            }
-            .custom-haojen-container .post-preview:nth-of-type(1) > a{padding: 20px}
-        }
-
-        /*手机屏幕*/
-        @media (max-width: 400px){
-            .custom-haojen-container .post-preview:nth-child(1){
-                height: 195px;
-            }
-            .custom-haojen-container .post-preview-poetry:nth-child(1) h2{
-                font-size: 20px!important;
-            }
-            .custom-haojen-container .post-preview:nth-child(1) .post-subtitle{
-                font-size: 16px;
-            }
-            .custom-haojen-container .post-preview:nth-child(1) a{
-                padding: 30px 20px;
-            }
-        }
-    </style>
-
-<!-- Page Header -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
-    <div class="row">
-        <header class="intro-header">
-            <div class="container">
-                <div class="site-heading text-center">
-                    <div class="about-me">
-                        <!--移动端头部显示-->
-                        <img src="http://web.qianduandu.com/gitHubDuFavicon.jpg" />
-                        <h5><a href="/about/">度</a></h5>
-                        <p>关注Web前端开发</p>
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
-    </div>
-<!-- Main Content -->
-<div class="container custom-haojen-container">
-    <!-- Post Container -->
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-            <!-- Main Content -->
-
-
-    
-        <div class="post-preview " style="background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')">
-    <a href="/2017/02/12/FIS-前端工程构建工具/">
-        <h2 class="post-title">
-            FIS - 前端工程构建工具
-        </h2>
-        <p class="post-meta">
-            2017-02-12
-        </p>
-        
-        <h3 class="post-subtitle">
-            解决前端开发中自动化工具、性能优化、模块化框架、开发规范、代码部署、开发流程等问题
-        </h3>
-        
-        <div class="post-content-preview">
-            <p>
-                Fis简介
-FIS 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。
-
-一, 安装nodejs 和 npm;二, 启动并编译项目;
-
-fis server start   启动808...
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-    
-        <div class="post-preview " style="background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')">
-    <a href="/2016/12/24/Es6教程/">
-        <h2 class="post-title">
-            ECMAScript 6 教程
-        </h2>
-        <p class="post-meta">
-            2016-12-24
-        </p>
-        
-        <h3 class="post-subtitle">
-            ECMAScript 6（简称ES6）是JavaScript语言的下一代标准。
-        </h3>
-        
-        <div class="post-content-preview">
-            <p>
-                
-
-‘use strict’;    在低版本浏览器下只是一个字符串不会报错在高版本浏览器下严格执行js;
-
-
-一，let和const1,块级作用域for (var i = 0; i &lt; 5; i++) &#123;  setTimeout(function()&#123;    con...
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-    
-        <div class="post-preview " style="background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')">
-    <a href="/2016/08/25/node中的模块/">
-        <h2 class="post-title">
-            node.Js 中的模块
-        </h2>
-        <p class="post-meta">
-            2016-08-25
-        </p>
-        
-        <h3 class="post-subtitle">
-            一个 node.js由大量模块组成，每个JS文件都是一个模块
-        </h3>
-        
-        <div class="post-content-preview">
-            <p>
-                node中的模块
-javaScript 从一个仅仅在浏览器上面的一个玩具语言，一转眼演变成无所不能神一般的存在。但是，由于天生存在着一点戏剧性，模块系统作为一门语言最基本的属性却是javaScript所缺的。
-
-1. JS的不足
-
-js没有模块系统，不支持封闭作用域或依赖管理
-没有标准库，没有...
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-    
-        <div class="post-preview " style="background-image: url('http://web.qianduandu.com/gitHubDuBg.jpg')">
-    <a href="/2016/08/24/Git基础教程/">
-        <h2 class="post-title">
-            Git基础教程
-        </h2>
-        <p class="post-meta">
-            2016-08-24
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                Git简介
-Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目.Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。Git 是一个快速、可扩展的分布式版本控制系统，它具有极为丰富的命令集，此文主要介绍gi...
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-
-<!-- 翻页 pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
-        </div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-
-                <!-- About Me -->
-                <section class="visible-md visible-lg" style="padding: 0 18px">
-                    <div class="short-about">
-                        <!--侧边栏头像-->
-                        
-                            <img src="http://web.qianduandu.com/gitHubDuFavicon.jpg" />
-                        
-                        <h5><a href="/about/">度</a></h5>
-                        
-                            <p>关注Web前端开发</p>
-                        
-                        <hr>
-                        <!-- SNS Link 社交 -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="http://weibo.com/qianduandu">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/niuyulei">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/NiuDaYe">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-
-                            
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- Featured Tags  标签 -->
-                
-                <section>
-                    <div class="tags">
-                        
-                        
-                        
-                        
-                        <a href="/tags/#教程" title="教程" rel="3">教程</a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </div>
-                </section>
-                
-
-                
-                <hr>
-                <h5 style="text-align: center;">Friends</h5>
-                <ul class="list-inline" style="text-align: center;">
-                    
-                    <li><a href="http://qianduandu.com" target="_blank">前端度</a></li>
-                    
-                    <li><a href="https://niudaye.github.io/du" target="_blank">NIUYULEI</a></li>
-                    
-                </ul>
-                
-
-            </div>
-    </div>
-</div>
-
-
-    <!-- Footer -->
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
-                <br>
-                <ul class="list-inline text-center" style="display:none;">
-                
-                
-                
-
-                
-                    <li>
-                        <a target="_blank" href="http://weibo.com/qianduandu">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/niuyulei">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-                    <li>
-                        <a target="_blank"  href="https://github.com/NiuDaYe">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; Du 2017
-                    <br>
-                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
-                    <br>
-                    Theme by <a target="_bank" href="https://niudaye.github.io/">度</a>
-                </p>
-
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/blog.js"></script>
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+      }
+      const speed = isEnd ? 1000 : isDeleting ? 50 : 120;
+      setTimeout(typeLoop, speed);
     }
-</script>
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("http://niudaye.github.io/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-<!-- Google Analytics -->
-
-
-
-<!-- Baidu Tongji -->
-
-<script>
-    var _baId = '098c926d03f4d898ae7908eb186be435';
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?" + _baId;
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-<!-- swiftype -->
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install','null','2.0.0');
-</script>
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    <!--wechat title img-->
-    <img class="wechat-title-img" src="http://web.qianduandu.com/gitHubDuFavicon.jpg">
+    typeLoop();
+  </script>
 </body>
-
 </html>

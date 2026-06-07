@@ -1,197 +1,68 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>度哈哈</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      background: #0a0f1c;
-      font-family: 'Orbitron', sans-serif;
-      color: #fff;
-    }
-    #bgCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-    }
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-    }
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #ccc;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      box-shadow: 0 0 20px #ccc;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #cfd8dc;
-      max-width: 600px;
-      line-height: 1.6;
-      min-height: 3em;
-    }
-    .typed-text {
-      display: inline;
-      border-right: 2px solid #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: blink 0.7s step-end infinite;
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-    .socials {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .socials a {
-      width: 50px;
-      height: 50px;
-      border: 2px solid #ccc;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.4rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .socials a:hover {
-      border: 2px solid #ccc;
-      background: #ccc;
-      color: #0a0f1c;
-      transform: scale(1.1);
-    }
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      p { font-size: 0.95rem; }
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-  <canvas id="bgCanvas"></canvas>
-  <div class="container">
-    <img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="头像" />
-    <h1>你好，我是度</h1>
-    <p><span id="typed" class="typed-text"></span></p>
-    <div class="socials">
-      <a href="https://github.com/niudaye" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/niuyulei" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:41508304@qq.com" title="邮箱"><i class="fas fa-envelope"></i></a>
-      <a href="tencent://message/?uin=41508304" title="QQ"><i class="fab fa-qq"></i></a>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>David Heckhoff - Web Developer (WebGL & Node.js)</title>
+    <meta
+      name="description"
+      content="Web developer creating interactive 3D web experiences and real-time apps with WebGL, TypeScript, and Node.js for high-performance, engaging websites."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://david-hckh.com/" />
+
+    <meta property="og:title" content="David Heckhoff - Web Developer (WebGL & Node.js)" />
+    <meta
+      property="og:description"
+      content="Web developer creating interactive 3D web experiences and real-time apps with WebGL, TypeScript, and Node.js for high-performance, engaging websites."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://david-hckh.com/" />
+    <meta property="og:image" content="https://david-hckh.com/meta/og-image.webp" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="David Heckhoff - Web Developer (WebGL & Node.js)" />
+    <meta
+      name="twitter:description"
+      content="Web developer creating interactive 3D web experiences and real-time apps with WebGL, TypeScript, and Node.js for high-performance, engaging websites."
+    />
+    <meta name="twitter:image" content="https://david-hckh.com/meta/twitter-image.webp" />
+
+    <link rel="preload" href="/fonts/urbanist-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/urbanist-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/urbanist-900.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/pro-font-windows-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/pro-font-windows-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <link rel="icon" type="image/png" href="/meta/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/meta/favicon.svg" />
+    <link rel="shortcut icon" href="/meta/favicon.ico" />
+
+    <meta name="theme-color" content="#dfd1bc" />
+    <script type="module" crossorigin src="/chunks/index-Dw773hnC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/BYmwxED6.css">
+  </head>
+  <body class="is-loading">
+    <svg style="display: none" viewBox="0 0 56 61" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path
+          id="logo-path"
+          d="M3 14 24 2C28 0 28 0 32 2L53 14C56 16 56 17 56 19L56 43C56 46 55 47 51 49L32 59C28 61 28 61 24 59L5 49C1 47 0 46 0 43L0 19C0 17 0 16 3 14M28 4 5 17 28 28 51 17 28 4M53 20 30 31 30 56 53 44 53 20M40 42 33 35C33 35 32 34 33 33 34 32 35 33 36 34L36 34 43 41C44 42 44 42 43 43L35 51C35 51 34 52 33 51 32 50 33 49 33 49L40 42M16 42 23 35C23 35 24 34 23 33 22 32 21 33 20 34L13 41C12 42 12 42 13 43L21 51C21 51 22 52 23 51 24 50 23 49 23 49L16 42"
+        ></path>
+      </defs>
+    </svg>
+    <div id="app"></div>
+    <div class="preloader">
+      <svg class="preloader-svg" viewBox="0 0 56 61" xmlns="http://www.w3.org/2000/svg">
+        <mask id="preloader-mask">
+          <rect fill="black" height="61" width="61"></rect>
+          <rect fill="white" height="61" width="61" class="preloader-rect" style="transform: scaleY(0)"></rect>
+        </mask>
+
+        <use href="#logo-path" class="preloader-path" opacity="0.3"></use>
+        <use href="#logo-path" class="preloader-path" mask="url(#preloader-mask)"></use>
+      </svg>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
-  <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    const particlesCount = 1000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particlesCount * 3);
-
-    for (let i = 0; i < particlesCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 200;
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const material = new THREE.PointsMaterial({ color: 0xcccccc, size: 1 });
-    const particles = new THREE.Points(geometry, material);
-    scene.add(particles);
-
-    camera.position.z = 60;
-
-    const clock = new THREE.Clock();
-    function animate() {
-      const elapsed = clock.getElapsedTime();
-      particles.rotation.y = elapsed * 0.05;
-      particles.rotation.x = elapsed * 0.01;
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // 打字机效果
-    const phrases = [
-      "热爱编程，探索未来。",
-      "专注前端，追求极致体验。",
-      "用代码点亮科技之光。"
-    ];
-    let i = 0;
-    let j = 0;
-    let currentPhrase = [];
-    let isDeleting = false;
-    let isEnd = false;
-
-    function typeLoop() {
-      const typedElement = document.getElementById("typed");
-      typedElement.innerHTML = currentPhrase.join("");
-
-      if (i < phrases.length) {
-        if (!isDeleting && j <= phrases[i].length) {
-          currentPhrase.push(phrases[i][j]);
-          j++;
-        }
-        if (isDeleting && j >= 0) {
-          currentPhrase.pop();
-          j--;
-        }
-        if (j === phrases[i].length) {
-          isEnd = true;
-          isDeleting = true;
-        }
-        if (isDeleting && j === 0) {
-          currentPhrase = [];
-          isDeleting = false;
-          i++;
-          if (i === phrases.length) i = 0;
-        }
-      }
-      const speed = isEnd ? 1000 : isDeleting ? 50 : 120;
-      setTimeout(typeLoop, speed);
-    }
-    typeLoop();
-  </script>
-</body>
+  </body>
 </html>
